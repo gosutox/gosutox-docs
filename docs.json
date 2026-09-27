@@ -7,10 +7,7 @@
     "dark": "/logo/logo-dark.png",
     "href": "https://docs.gosutox.com"
   },
-  "favicon": {
-    "light": "/logo/favicon-light.png",
-    "dark": "/logo/favicon-dark.png"
-  },
+  "favicon": "/favicon.ico",
   "colors": {
     "primary": "#496796",
     "light": "#496796",
@@ -160,5 +157,11 @@
   },
   "footerSocials": {
     "github": "https://github.com/gosutox"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/trust/changelog-v1.0.0",
+      "destination": "/changelog/v1.0.0"
+    }
+  ]
 }
