@@ -1,21 +1,24 @@
 ---
 title: "Multimodal Data Files Vault"
-description: "7 supported file categories, comprehensive format extensions, size limits, and 10-file multi-context staging."
+description: "Supported file categories, comprehensive format extensions, size limits, and 10-file multi-context staging."
 ---
 
 ## Supported File Categories & Exhaustive Formats
 
-AXON supports native multimodal ingestion across **7 major file categories** without requiring external third-party conversion tools:
+AXON supports native multimodal ingestion across **6 core file categories** with strict zero-loss guarantees:
 
-| Category | Supported Format Extensions | Single-File Limit |
-| :--- | :--- | :--- |
-| **Documents & Slides** | `PDF`, `DOCX`, `DOC`, `TXT`, `MD`, `MDX`, `PPTX`, `PPT`, `HTML`, `RTF` | **30MB / 300 pages** |
-| **Spreadsheets & Data** | `XLSX`, `XLS`, `CSV`, `TSV`, `PARQUET`, `NPY`, `NPZ` | **30MB** |
-| **Code & Config** | `PY`, `IPYNB`, `JS`, `MJS`, `TS`, `TSX`, `JSX`, `CSS`, `SCSS`, `JSON`, `YAML`, `YML`, `TOML`, `INI`, `ENV`, `SQL`, `SH`, `DOCKERFILE` | **30MB** |
-| **Images & Graphics** | `PNG`, `JPG`, `JPEG`, `WEBP`, `SVG`, `GIF`, `ICO`, `HEIC`, `HEIF` | **10MB** |
-| **Audio & Recordings** | `MP3`, `WAV`, `M4A`, `AAC`, `OGG` | **50MB** |
-| **Video & Screencasts** | `MP4`, `MOV`, `WEBM`, `AVI`, `MPEG` | **50MB** |
-| **Archives & Packages** | `ZIP`, `TAR`, `GZ`, `RAR` | **50MB** |
+| Category | Supported Format Extensions | Single-File Limit | Policy & Pre-processing |
+| :--- | :--- | :--- | :--- |
+| **Documents** | `PDF`, `TXT`, `MD`, `MDX`, `HTML`, `HTM` | **30MB / 300 pages** | Word (`DOCX`), PowerPoint (`PPTX`), and Hangul (`HWP`) must be converted to **PDF** prior to upload. |
+| **Spreadsheets & Tabular Data** | `XLSX`, `XLS`, `CSV`, `TSV`, `PARQUET` | **30MB** | Direct vector & formula parsing. |
+| **Code & Configuration** | `PY`, `JS`, `TS`, `TSX`, `JSX`, `VUE`, `CSS`, `SCSS`, `JSON`, `JSONL`, `YAML`, `YML`, `SQL`, `SH`, `BASH`, `XML`, `TOML`, `JAVA`, `GO`, `RS`, `INI`, `CONF` | **30MB** | High-density semantic AST code indexing. |
+| **Images & Visuals** | `PNG`, `JPG`, `JPEG`, `WEBP`, `HEIC`, `HEIF`, `BMP`, `TIFF`, `SVG` | **10MB** | Ultra-high-resolution multimodal vision analysis. |
+| **Audio & Voice** | `MP3`, `WAV`, `AAC`, `OGG`, `FLAC`, `AIFF` | **50MB** | Whisper-based automatic transcription & semantic indexing. |
+| **Video & Recordings** | `MP4`, `MOV`, `AVI`, `WEBM`, `MPEG`, `MPG`, `WMV`, `3GPP` | **50MB** | Multimodal visual frame & audio track extraction. |
+
+<Note>
+**The PDF Pre-Processing Policy**: To eliminate server-side layout skew, dropped table cells, and AI hallucinations from raw office files, AXON strictly requires Word (`.docx`), PowerPoint (`.pptx`), and Hangul (`.hwp`) documents to be baked to **PDF** prior to uploading. See [Why Office Files Must Be Converted to PDF](/data/why-pdf-conversion) for full architectural details.
+</Note>
 
 ---
 
@@ -26,7 +29,6 @@ In the **Right Context Tools Panel**, users can select up to **10 files simultan
 ```mermaid
 flowchart TD
     subgraph Staged_Vault ["📁 10-File Multimodal Staging Vault"]
-        direction LR
         F1["📄 Patent_Claims.pdf"]
         F2["📊 Q3_Financial_Model.xlsx"]
         F3["🖼️ System_Architecture.png"]

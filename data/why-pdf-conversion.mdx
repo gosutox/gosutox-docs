@@ -1,15 +1,20 @@
 ---
 title: 'Why Office Files Must Be Converted to PDF'
-description: 'The technical rationale for converting Word, PowerPoint, and HWP files to PDF for 100% loss-free grounding.'
+description: 'The technical rationale for converting Word, PowerPoint, and Hangul files to PDF for 100% loss-free grounding.'
 ---
 
 ## The Vector Loss-Free Grounding Principle
 
 > [!IMPORTANT]
 > **Mandatory PDF Pre-Processing Policy**:
-> Word (), PowerPoint (), and Hangul () files must be converted (baked) to **PDF ()** prior to uploading.
+> Word (`.docx`, `.doc`), PowerPoint (`.pptx`, `.ppt`), and Hangul (`.hwp`) files must be converted (baked) to **PDF (`.pdf`)** prior to uploading to AXON.
 
 ### Why Are Raw Office Files Restricted?
 1. **Parser Layout Skew**: Proprietary office XML formats frequently experience dropped tables, misplaced footnotes, and font substitution during server-side text extraction.
-2. **Hallucination Vectors**: Missing table cells in a financial report cause AI models to hallucinate numbers.
+2. **Hallucination Vectors**: Missing table cells or misplaced footnotes in a financial or legal report cause AI models to hallucinate figures.
 3. **Exact Visual OCR Grounding**: Exporting to PDF preserves the **fixed vector layout, exact coordinates, and typography**. AXON's multimodal vision engine indexes the exact visual page, guaranteeing **100% loss-free grounding and citation accuracy**.
+
+### How to Prepare Files for Upload
+* **Microsoft Word / PowerPoint**: Use **File > Save As / Export > PDF**.
+* **Hancom Office (HWP)**: Use **File > Save As PDF**.
+* **Google Docs / Slides**: Use **File > Download > PDF Document (.pdf)**.
