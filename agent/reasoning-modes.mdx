@@ -1,18 +1,116 @@
 ---
-title: 'Reasoning Modes: Flash vs. Think'
-description: 'Optimize between instantaneous turnaround and deep multi-step cognitive deliberation.'
+title: "Reasoning Modes: Flash vs. Think"
+description: "Master the dual cognitive engines: Sub-second instantaneous Flash Mode vs. Deep multi-step Think Mode with transparent reasoning traces."
 ---
 
-## Dual Reasoning Modes
+## The Dual-Engine Cognitive Paradigm
 
-AXON Agent allows users to toggle between two operational reasoning modes in the bottom input bar:
+Enterprise intelligence requires two fundamentally different operational velocities: **instant conversational agility** for rapid day-to-day execution, and **deep multi-step deliberation** for high-stakes strategic decisions.
 
-### 1. Flash Mode (Default)
-* **Latency**: Sub-second instantaneous stream.
-* **Best For**: Direct factual questions, quick document summaries, live market lookups, and draft editing.
-* **Token Efficiency**: Ultra-lean token consumption with direct tool-to-output delivery.
+AXON Agent provides two dedicated reasoning engines, toggled with a single click in the input toolbar:
 
-### 2. Think Mode (Deep Dynamic Thinking)
-* **Latency**: 3 to 10 seconds of deep autonomous reflection.
-* **Best For**: Complex multi-variable trade-off analysis, legal contract risk audits, multi-year financial forecasting, and code architecture design.
-* **Live Thinking Blocks**: Watch the agent dynamically evaluate hypotheses, reject faulty assumptions, and cross-verify facts before emitting the final answer.
+```mermaid
+flowchart TD
+    Prompt["💬 User Strategic Prompt"] --> Switch{"⚙️ Reasoning Mode Switch"}
+    
+    Switch -->|Flash Mode| Fast["⚡ Sub-Second Direct Stream"]
+    Switch -->|Think Mode (Pro)| Deep["🧠 Multi-Step Deep Deliberation"]
+    
+    Fast --> Output1["📄 Rapid Operational Response"]
+    
+    Deep --> Trace["💭 Live Collapsible Thinking Block\n(Progress Bar • Elapsed Timer • Step Validation)"]
+    Trace --> Output2["📊 Comprehensive Boardroom Deliverable"]
+```
+
+---
+
+## Flash vs. Think: Side-by-Side Comparison
+
+| Operational Dimension | ⚡ Flash Mode (Default) | 🛡️ Think Mode (Pro Reasoning) |
+| :--- | :--- | :--- |
+| **Response Latency** | Sub-second (< 800ms initial token) | 3 – 8 seconds of deep autonomous reflection |
+| **Cognitive Approach** | Direct, highly focused linear synthesis | Multi-hypothesis validation & counter-analysis |
+| **Thinking Trace** | Streamlined / Minimal trace | Full collapsible live progress bar & reasoning log |
+| **Token Efficiency** | Ultra-lean token consumption | High-depth token allocation for complex logic |
+| **Primary Use Cases** | Live market lookups, drafting, summaries | M&A due diligence, legal audits, complex modeling |
+
+---
+
+## 1. Flash Mode: High-Velocity Execution
+
+**Flash Mode** is engineered for maximum throughput. It bypasses extended recursive reflection loops to deliver immediate, highly structured answers with zero latency lag.
+
+<CardGroup cols={2}>
+  <Card title="Instant API Lookups" icon="bolt">
+    Query live stock quotes, FX exchange rates, or single SEC/DART regulatory disclosures in real time.
+  </Card>
+  <Card title="Document Summaries & Edits" icon="file-lines">
+    Quickly distill uploaded PDF notes, reformat text, translate languages, or polish executive drafts.
+  </Card>
+</CardGroup>
+
+### Concrete "Aha!" Scenario: Rapid Market Check
+> **Prompt**: *"What is the latest 10-Q filing date for Apple (AAPL), and what was the reported operating margin?"*
+> 
+> **Flash Execution**: Instantly activates the **SEC EDGAR Connector**, extracts the exact metrics from the latest filing, and streams the verified answer within 600ms—complete with a clickable `[ref:SEC EDGAR: AAPL]` source badge.
+
+---
+
+## 2. Think Mode: Deep Multi-Step Deliberation
+
+**Think Mode (Pro)** unlocks AXON's full cognitive power for ambiguous, multi-variable challenges where hasty answers lead to costly corporate errors.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🧠 Thinking Process (100%)  |  2.4s                      ▲  │
+├─────────────────────────────────────────────────────────────┤
+│ 1. Decomposing patent claims in Section 4.2...              │
+│ 2. Cross-referencing against FDA 510(k) approval database... │
+│ 3. Identifying potential indemnification conflict...        │
+│ 4. Formulating risk mitigation strategy...                  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### The Live Thinking Block Features
+* **Real-Time Progress Bar**: Visual progress indicator tracking cognitive convergence from 0% to 100%.
+* **Live Elapsed Timer**: Precise stopwatch (`0.8s`, `2.4s`, `4.1s`) showing exact deliberation duration.
+* **Auto-Scrolling Reasoning Trace**: Transparently observe how the agent evaluates hypotheses, detects contradictory data points, and verifies logic before committing to the final answer.
+* **Smart Auto-Collapse**: The thinking panel automatically collapses once deliverable streaming begins, keeping your workspace clean while remaining fully expandable on-demand.
+
+### Concrete "Aha!" Scenario: Complex Legal & Financial Risk Audit
+> **Prompt**: *"Cross-examine our attached Series B Shareholder Agreement (PDF) against the uploaded Cap Table (XLSX). Highlight any liquidation preference overhangs or anti-dilution triggers."*
+> 
+> **Think Execution**: The agent spends 4.2 seconds systematically parsing the liquidation waterfall formulas in the spreadsheet, cross-referencing clause numbers in the legal PDF, testing edge cases, and generating a pixel-perfect boardroom risk audit table in Document Studio.
+
+---
+
+## How to Toggle Reasoning Modes
+
+You can switch between Flash and Think Mode at any time without resetting your conversation history:
+
+1. **Input Toolbar Toggle**: Click the **⚡ FLASH** or **🛡️ PRO** pill button directly inside the central input area.
+2. **Right Context Tools Panel**: Select your desired reasoning mode from the **Context Configuration** sidebar.
+3. **Turn-by-Turn Flexibility**: Use **Flash Mode** for introductory questions, switch to **Think Mode** for the core analytical challenge, and switch back to **Flash Mode** for final formatting adjustments.
+
+---
+
+## Mathematical Token Billing Parity
+
+AXON maintains strict mathematical billing transparency across both modes:
+
+* In **Flash Mode**, token deductions reflect strictly the raw input prompt and generated answer.
+* In **Think Mode**, transparent token accounting covers both the deep reasoning steps and the synthesized output, visible in your real-time session telemetry.
+* **Zero Token Waste**: AXON never runs infinite uncontrolled retry loops. All thinking steps are bounded by deterministic safety ceilings.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="1-Turn Tool Symphony" icon="sliders" href="/agent/tools-orchestration">
+    Learn how to bind Brains, live APIs, and up to 10 data files simultaneously in either reasoning mode.
+  </Card>
+  <Card title="Code & HTML Artifact Generation" icon="code" href="/agent/code-generation-html">
+    Explore how Think Mode autonomously generates standalone interactive HTML tools and visual calculators.
+  </Card>
+</CardGroup>
