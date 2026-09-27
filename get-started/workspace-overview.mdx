@@ -1,42 +1,126 @@
 ---
 title: "Workspace Anatomy & Navigation"
-description: "Master the 3-column layout: Left Sessions Drawer, Central Canvas, and Right Tools Panel."
+description: "Master the 3-column enterprise interface: Left Navigation Drawer, Central Execution Canvas, and Right Context Panel."
 ---
 
-## Anatomy of the AXON Interface
+## The Unified 3-Column Interface
 
-AXON features a clean, unified 3-column layout engineered for high-density cognitive workflows:
+AXON is built upon an ergonomic, high-density 3-column workspace designed to keep complex enterprise context accessible without cluttering your cognitive flow.
 
-<CardGroup cols={3}>
-  <Card title="Left Sidebar (Navigation)" icon="sidebar">
-    - **New Chat & Category Folders**
-    - **Session History & Instant Search**
-    - **Active Background Tasks**
-    - **Resource Center Quick Links**
+```mermaid
+flowchart LR
+    subgraph Col1 ["1. Left Navigation Drawer"]
+        direction TB
+        N1["➕ New Chat Session"]
+        N2["📁 Categorized Folder Tree"]
+        N3["🔍 Real-Time Session Search"]
+        N4["⚡ Background Tasks Monitor"]
+    end
+
+    subgraph Col2 ["2. Central Execution Canvas"]
+        direction TB
+        C1["🧭 Top App Switcher & Regional Badge"]
+        C2["💬 60 FPS Fluid Streaming Stream"]
+        C3["💭 Dynamic Collapsible Thinking Block"]
+        C4["📄 Action Bar (HTML & PDF Export)"]
+        C5["⌨️ Multi-Format Prompt Input"]
+    end
+
+    subgraph Col3 ["3. Right Context Tools Panel"]
+        direction TB
+        R1["🧠 Brain Neural Hub Selector"]
+        R2["📡 41+ Real-Time API Toggles"]
+        R3["📁 10-File Multimodal Staging"]
+        R4["⚙️ Reasoning Mode (Flash / Think)"]
+    end
+
+    Col1 --- Col2 --- Col3
+```
+
+---
+
+## 1. Left Navigation Drawer (Sessions & Structure)
+
+The Left Drawer manages your historical context, project organization, and long-running background tasks.
+
+<CardGroup cols={2}>
+  <Card title="New Chat & Quick Launch" icon="plus">
+    Instantly start an unpolluted cognitive session with a single click or keyboard shortcut (`Cmd + Shift + O`).
   </Card>
-  <Card title="Central Canvas (Workspace)" icon="browser">
-    - **60 FPS Real-Time Streaming**
-    - **Dynamic Thinking Blocks**
-    - **Action Bar (PDF/HTML Export)**
-    - **Multi-Format Input System**
+  <Card title="Categorized Folder Hierarchy" icon="folder-tree">
+    Organize client deliverables, department chats, and deep research topics into nested, color-coded project folders.
   </Card>
-  <Card title="Right Tools Panel (Context)" icon="sliders">
-    - **Brain Selector (Neural Memory)**
-    - **41+ Live Regulatory & Market APIs**
-    - **Multimodal Data Files Staging (10)**
-    - **Reasoning Mode Controls**
+  <Card title="Instant Global Search" icon="magnifying-glass">
+    Search across historical conversations, session titles, and referenced document names in real time (`Cmd + K`).
+  </Card>
+  <Card title="Background Task Monitor" icon="circle-notch">
+    Track the real-time execution status of autonomous deep-research tasks while working in parallel threads.
   </Card>
 </CardGroup>
 
-### 1. Left Sidebar (Session & Folder Tree)
-* **Categories & Folders**: Organize client projects, research topics, and department chats into nested folders.
-* **Instant Search**: Rapidly filter across hundreds of historical sessions.
-* **Background Tasks Indicator**: Monitor ongoing deep multi-step agent tasks in real time.
+---
 
-### 2. Central Canvas (Dynamic Stream)
-* **Fluid Stream Engine**: Smooth 60 FPS streaming text rendering with zero lag.
-* **Active Decision Badges**: View which live APIs or Brains were queried for each turn.
-* **Action Bar**: Instant Copy All, Clear, New Chat, and **Download All PDF/HTML**.
+## 2. Central Execution Canvas (Interactive Workspace)
 
-### 3. Right Tools Panel (Context Selector)
-* Toggle Brains, Live Data APIs, and Data Files on or off for individual conversation turns without leaving the flow.
+The Central Canvas is the core cognitive interaction space where ideas transform into boardroom deliverables.
+
+### Anatomy of the Central Canvas
+
+| UI Element | Functional Role | Operational Value |
+| :--- | :--- | :--- |
+| **Top Application Switcher** | Seamlessly switch between the 7 core apps | Jump from **Agent** to **Symposium** or **Document Studio** with shared context |
+| **Sovereign Region Badge** | Visual indicator of active datacenter (`KR / US`) | Constant legal verification of data isolation |
+| **60 FPS Fluid Stream** | High-velocity streaming text engine | Zero-stutter rendering with intelligent scroll lock |
+| **Collapsible Thinking Block** | Transparent multi-step reasoning trace | Inspect the step-by-step logic and hypothesis validation |
+| **Action Bar** | Instant document operations | **Copy All**, **Clear**, **Download Standalone HTML**, **Export / Print PDF** |
+| **Multi-Format Input Bar** | Goal submission & reasoning mode switch | Toggle between **Flash Mode** and **Think Mode** |
+
+<Note>
+**Zero Page-Split PDF Guarantee**: When using the Action Bar's **Export PDF** button, AXON applies intelligent `@media print` rules, ensuring tables, charts, and diagrams are never awkwardly severed across page breaks.
+</Note>
+
+---
+
+## 3. Right Context Tools Panel (1-Turn Symphony)
+
+The Right Panel is your dynamic context console, allowing you to selectively activate external data sources per conversation turn.
+
+<Tabs>
+  <Tab title="🧠 Brains Selector">
+    - Attach specialized enterprise neural hubs (e.g., *Legal Review Brain*, *Corporate Finance Hub*).
+    - Ingests bespoke organizational heuristics, terminology, and evaluation rules into the prompt turn.
+  </Tab>
+
+  <Tab title="📡 41+ Live APIs">
+    - Selectively toggle real-time regulatory and financial data feeds:
+      - **Regulatory Feeds**: SEC EDGAR 10-K/10-Q filings, Korea DART disclosures, FDA drug approvals.
+      - **Market & Macro Feeds**: Real-time FX rates, FRED macroeconomic indicators, Yahoo Finance, Crypto.
+      - **Knowledge Feeds**: ArXiv scientific preprints, PubMed biomedical literature, Wikipedia grounding.
+  </Tab>
+
+  <Tab title="📁 Data Files Staging">
+    - Select up to **10 files** simultaneously from your Multimodal Vault.
+    - Supported formats: **PDF, DOCX, XLSX, CSV, JSON, PY, PNG, MP3, MP4**.
+    - Directly fuses internal proprietary spreadsheets and slides into the active reasoning loop.
+  </Tab>
+</Tabs>
+
+---
+
+## Responsive Layout Controls
+
+* **Collapsible Sidebars**: Click the sidebar collapse icons (or press `Cmd + /`) to expand the central canvas into a distraction-free, full-width document workspace.
+* **Dual Theme Parity**: Toggle between **Solid Navy Mirage (Light)** and **Translucent Frost Glass (Dark)** using the top-right sun/moon icon.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="1-Turn Tool Symphony" icon="sliders" href="/agent/tools-orchestration">
+    Deep-dive into combining custom Brains, 41+ live APIs, and 10 data files in a single turn.
+  </Card>
+  <Card title="Document Studio & PDF Export" icon="file-pdf" href="/studio/document-viewer">
+    Learn how Document Studio generates standalone interactive HTML bundles and executive PDF prints.
+  </Card>
+</CardGroup>
