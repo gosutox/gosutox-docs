@@ -1,6 +1,5 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "$schema": "https://mintlify.com/schema.json",
   "name": "Gōsuto X & AXON Docs",
   "logo": {
     "light": "/logo/logo-light.png",
@@ -11,150 +10,145 @@
   "colors": {
     "primary": "#496796",
     "light": "#496796",
-    "dark": "#8fb3f5"
-  },
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Get Started",
-        "groups": [
-          {
-            "group": "Welcome & Onboarding",
-            "pages": [
-              "index",
-              "get-started/quickstart",
-              "get-started/philosophy-ai2",
-              "get-started/workspace-overview"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Core AI Engine",
-        "groups": [
-          {
-            "group": "AXON Agent (Core Engine)",
-            "pages": [
-              "agent/overview",
-              "agent/sessions-and-folders",
-              "agent/reasoning-modes",
-              "agent/tools-orchestration",
-              "agent/code-generation-html"
-            ]
-          },
-          {
-            "group": "Brains Studio (Neural Hubs)",
-            "pages": [
-              "brains/overview",
-              "brains/creating-brains",
-              "brains/brain-management"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Flagship Apps",
-        "groups": [
-          {
-            "group": "AXON Symposium (Multi-Agent Debate)",
-            "pages": [
-              "symposium/overview",
-              "symposium/summoning-expert-panel",
-              "symposium/autonomous-debate-flow",
-              "symposium/consensus-report-export"
-            ]
-          },
-          {
-            "group": "AXON CoWorX (Team Canvas & Messenger)",
-            "pages": [
-              "coworx/overview",
-              "coworx/summoning-personal-brains",
-              "coworx/live-canvas-authoring",
-              "coworx/team-workspace-management"
-            ]
-          },
-          {
-            "group": "AXON Talk (Brain-Embodied Voice)",
-            "pages": [
-              "talk/overview",
-              "talk/brain-embodied-voices",
-              "talk/voice-customization",
-              "talk/mobile-handsfree-scenarios"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Data & Studio",
-        "groups": [
-          {
-            "group": "Live Data & Multimodal Vault",
-            "pages": [
-              "data/live-data-architecture",
-              "data/41-global-api-channels",
-              "data/multimodal-staging-vault",
-              "data/why-pdf-conversion"
-            ]
-          },
-          {
-            "group": "Document Studio & Artifacts",
-            "pages": [
-              "studio/document-viewer",
-              "studio/html-download",
-              "studio/pdf-printing-engine"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Trust & Security",
-        "groups": [
-          {
-            "group": "Enterprise Governance (SOC 2)",
-            "pages": [
-              "trust/data-sovereignty",
-              "trust/zero-training-guarantee",
-              "trust/token-economics-billing",
-              "trust/refund-and-cancellation"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Release Notes",
-        "groups": [
-          {
-            "group": "Version History & Cadence",
-            "pages": [
-              "changelog/overview",
-              "changelog/v1-0-0"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Gōsuto X Corporate",
-        "href": "https://www.gosutox.com"
-      },
-      {
-        "label": "Pricing",
-        "href": "https://axon.gosutox.com/#pricing"
-      },
-      {
-        "label": "Support",
-        "href": "https://axon.gosutox.com/support"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Launch AXON",
-      "href": "https://axon.gosutox.com"
+    "dark": "#8fb3f5",
+    "background": {
+      "dark": "#0d131f",
+      "light": "#ffffff"
     }
   },
+  "topbarLinks": [
+    {
+      "name": "Gōsuto X Corporate",
+      "url": "https://www.gosutox.com"
+    },
+    {
+      "name": "Pricing",
+      "url": "https://axon.gosutox.com/#pricing"
+    },
+    {
+      "name": "Support",
+      "url": "https://axon.gosutox.com/support"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Launch AXON",
+    "url": "https://axon.gosutox.com"
+  },
+  "tabs": [
+    {
+      "name": "Get Started",
+      "url": "get-started"
+    },
+    {
+      "name": "Core AI Engine",
+      "url": "agent"
+    },
+    {
+      "name": "Flagship Apps",
+      "url": "apps"
+    },
+    {
+      "name": "Data & Studio",
+      "url": "data"
+    },
+    {
+      "name": "Trust & Security",
+      "url": "trust"
+    },
+    {
+      "name": "Release Notes",
+      "url": "changelog"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Welcome & Onboarding",
+      "pages": [
+        "index",
+        "get-started/quickstart",
+        "get-started/philosophy-ai2",
+        "get-started/workspace-overview"
+      ]
+    },
+    {
+      "group": "AXON Agent (Core Engine)",
+      "pages": [
+        "agent/overview",
+        "agent/sessions-and-folders",
+        "agent/reasoning-modes",
+        "agent/tools-orchestration",
+        "agent/code-generation-html"
+      ]
+    },
+    {
+      "group": "Brains Studio (Neural Hubs)",
+      "pages": [
+        "brains/overview",
+        "brains/creating-brains",
+        "brains/brain-management"
+      ]
+    },
+    {
+      "group": "AXON Symposium (Multi-Agent Debate)",
+      "pages": [
+        "symposium/overview",
+        "symposium/summoning-expert-panel",
+        "symposium/autonomous-debate-flow",
+        "symposium/consensus-report-export"
+      ]
+    },
+    {
+      "group": "AXON CoWorX (Team Canvas & Messenger)",
+      "pages": [
+        "coworx/overview",
+        "coworx/summoning-personal-brains",
+        "coworx/live-canvas-authoring",
+        "coworx/team-workspace-management"
+      ]
+    },
+    {
+      "group": "AXON Talk (Brain-Embodied Voice)",
+      "pages": [
+        "talk/overview",
+        "talk/brain-embodied-voices",
+        "talk/voice-customization",
+        "talk/mobile-handsfree-scenarios"
+      ]
+    },
+    {
+      "group": "Live Data & Multimodal Vault",
+      "pages": [
+        "data/live-data-architecture",
+        "data/41-global-api-channels",
+        "data/multimodal-staging-vault",
+        "data/why-pdf-conversion"
+      ]
+    },
+    {
+      "group": "Document Studio & Artifacts",
+      "pages": [
+        "studio/document-viewer",
+        "studio/html-download",
+        "studio/pdf-printing-engine"
+      ]
+    },
+    {
+      "group": "Enterprise Governance (SOC 2)",
+      "pages": [
+        "trust/data-sovereignty",
+        "trust/zero-training-guarantee",
+        "trust/token-economics-billing",
+        "trust/refund-and-cancellation"
+      ]
+    },
+    {
+      "group": "Version History & Cadence",
+      "pages": [
+        "changelog/overview",
+        "changelog/v1-0-0"
+      ]
+    }
+  ],
   "footerSocials": {
     "github": "https://github.com/gosutox"
   },
