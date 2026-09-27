@@ -118,8 +118,19 @@
               "trust/data-sovereignty",
               "trust/zero-training-guarantee",
               "trust/token-economics-billing",
-              "trust/refund-and-cancellation",
-              "trust/changelog-v1.0.0"
+              "trust/refund-and-cancellation"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Release Notes",
+        "groups": [
+          {
+            "group": "Version History & Cadence",
+            "pages": [
+              "changelog/overview",
+              "changelog/v1.0.0"
             ]
           }
         ]
