@@ -155,9 +155,6 @@
       "href": "https://axon.gosutox.com"
     }
   },
-  "footerSocials": {
-    "github": "https://github.com/gosutox"
-  },
   "redirects": [
     {
       "source": "/changelog/v1.0.0",
@@ -243,5 +240,10 @@
       "source": "/live-data/financial-markets",
       "destination": "/data/41-global-api-channels"
     }
-  ]
+  ],
+  "footer": {
+    "socials": {
+      "github": "https://github.com/gosutox"
+    }
+  }
 }
