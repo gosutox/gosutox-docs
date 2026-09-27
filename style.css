@@ -226,7 +226,250 @@ html.dark .card:hover {
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
-   4. Common Components & Typography Polish
+   4. Mermaid Enterprise Visual Palette Standard (Parity with AXON Renderer)
+   Eliminates all cartoonish default colors (Yellow #ffffde & Purple #ececff)
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Mermaid Container Container */
+svg[id^="mermaid"],
+.mermaid svg,
+div[class*="mermaid"] svg {
+  background: transparent !important;
+  font-family: var(--font-family-base) !important;
+  margin: 1.2rem auto !important;
+  display: block !important;
+}
+
+/* ── Light Mode Mermaid ── */
+html.light svg[id^="mermaid"],
+html.light .mermaid svg,
+html[data-theme="light"] svg[id^="mermaid"],
+html[data-theme="light"] .mermaid svg,
+:root:not(.dark) svg[id^="mermaid"],
+:root:not(.dark) .mermaid svg {
+  /* Nodes (Rect, Circle, Polygon, Cylinder/Path) */
+  --mermaid-node-bg: #f8fafc;
+  --mermaid-node-border: rgba(73, 103, 150, 0.25);
+  --mermaid-node-text: #0f172a;
+}
+
+html.light svg[id^="mermaid"] .node rect,
+html.light svg[id^="mermaid"] .node polygon,
+html.light svg[id^="mermaid"] .node circle,
+html.light svg[id^="mermaid"] .node ellipse,
+html.light svg[id^="mermaid"] .node path,
+html[data-theme="light"] svg[id^="mermaid"] .node rect,
+html[data-theme="light"] svg[id^="mermaid"] .node polygon,
+html[data-theme="light"] svg[id^="mermaid"] .node circle,
+html[data-theme="light"] svg[id^="mermaid"] .node ellipse,
+html[data-theme="light"] svg[id^="mermaid"] .node path,
+:root:not(.dark) svg[id^="mermaid"] .node rect,
+:root:not(.dark) svg[id^="mermaid"] .node polygon,
+:root:not(.dark) svg[id^="mermaid"] .node circle,
+:root:not(.dark) svg[id^="mermaid"] .node ellipse,
+:root:not(.dark) svg[id^="mermaid"] .node path {
+  fill: #f8fafc !important;
+  stroke: rgba(73, 103, 150, 0.25) !important;
+  stroke-width: 1.2px !important;
+  rx: 8px !important;
+  ry: 8px !important;
+}
+
+/* Light Mode Clusters (Subgraphs - Overrides Default Yellow #ffffde) */
+html.light svg[id^="mermaid"] .cluster rect,
+html.light svg[id^="mermaid"] .cluster path,
+html.light svg[id^="mermaid"] .cluster polygon,
+html[data-theme="light"] svg[id^="mermaid"] .cluster rect,
+html[data-theme="light"] svg[id^="mermaid"] .cluster path,
+html[data-theme="light"] svg[id^="mermaid"] .cluster polygon,
+:root:not(.dark) svg[id^="mermaid"] .cluster rect,
+:root:not(.dark) svg[id^="mermaid"] .cluster path,
+:root:not(.dark) svg[id^="mermaid"] .cluster polygon {
+  fill: rgba(73, 103, 150, 0.035) !important;
+  stroke: rgba(73, 103, 150, 0.16) !important;
+  stroke-width: 1px !important;
+  rx: 10px !important;
+  ry: 10px !important;
+}
+
+/* Light Mode Cluster Title */
+html.light svg[id^="mermaid"] .cluster text,
+html.light svg[id^="mermaid"] .cluster span,
+html[data-theme="light"] svg[id^="mermaid"] .cluster text,
+html[data-theme="light"] svg[id^="mermaid"] .cluster span,
+:root:not(.dark) svg[id^="mermaid"] .cluster text,
+:root:not(.dark) svg[id^="mermaid"] .cluster span {
+  fill: #1d2639 !important;
+  color: #1d2639 !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+}
+
+/* Light Mode Node Text */
+html.light svg[id^="mermaid"] .node text,
+html.light svg[id^="mermaid"] .node tspan,
+html.light svg[id^="mermaid"] .node span,
+html.light svg[id^="mermaid"] .node div,
+html[data-theme="light"] svg[id^="mermaid"] .node text,
+html[data-theme="light"] svg[id^="mermaid"] .node tspan,
+html[data-theme="light"] svg[id^="mermaid"] .node span,
+html[data-theme="light"] svg[id^="mermaid"] .node div,
+:root:not(.dark) svg[id^="mermaid"] .node text,
+:root:not(.dark) svg[id^="mermaid"] .node tspan,
+:root:not(.dark) svg[id^="mermaid"] .node span,
+:root:not(.dark) svg[id^="mermaid"] .node div {
+  fill: #0f172a !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+  font-size: 11.5px !important;
+}
+
+/* Light Mode Flowchart Connectors & Arrow Markers */
+html.light svg[id^="mermaid"] .flowchart-link,
+html.light svg[id^="mermaid"] .edgePath .path,
+html.light svg[id^="mermaid"] path.path,
+html[data-theme="light"] svg[id^="mermaid"] .flowchart-link,
+html[data-theme="light"] svg[id^="mermaid"] .edgePath .path,
+html[data-theme="light"] svg[id^="mermaid"] path.path,
+:root:not(.dark) svg[id^="mermaid"] .flowchart-link,
+:root:not(.dark) svg[id^="mermaid"] .edgePath .path,
+:root:not(.dark) svg[id^="mermaid"] path.path {
+  stroke: #496796 !important;
+  stroke-width: 1.2px !important;
+}
+
+html.light svg[id^="mermaid"] marker path,
+html.light svg[id^="mermaid"] marker circle,
+html[data-theme="light"] svg[id^="mermaid"] marker path,
+html[data-theme="light"] svg[id^="mermaid"] marker circle,
+:root:not(.dark) svg[id^="mermaid"] marker path,
+:root:not(.dark) svg[id^="mermaid"] marker circle {
+  fill: #496796 !important;
+  stroke: #496796 !important;
+}
+
+/* Light Mode Edge Label Badges */
+html.light svg[id^="mermaid"] .edgeLabel,
+html.light svg[id^="mermaid"] .edgeLabel rect,
+html.light svg[id^="mermaid"] .edgeLabel span,
+html[data-theme="light"] svg[id^="mermaid"] .edgeLabel,
+html[data-theme="light"] svg[id^="mermaid"] .edgeLabel rect,
+html[data-theme="light"] svg[id^="mermaid"] .edgeLabel span,
+:root:not(.dark) svg[id^="mermaid"] .edgeLabel,
+:root:not(.dark) svg[id^="mermaid"] .edgeLabel rect,
+:root:not(.dark) svg[id^="mermaid"] .edgeLabel span {
+  background: #ffffff !important;
+  fill: #ffffff !important;
+  color: #475569 !important;
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+}
+
+/* ── Dark Mode Mermaid ── */
+html.dark svg[id^="mermaid"],
+html.dark .mermaid svg,
+html[data-theme="dark"] svg[id^="mermaid"],
+html[data-theme="dark"] .mermaid svg {
+  --mermaid-node-bg: rgba(255, 255, 255, 0.05);
+  --mermaid-node-border: rgba(143, 179, 245, 0.35);
+  --mermaid-node-text: #ffffff;
+}
+
+/* Dark Mode Nodes (Translucent Slate Frost) */
+html.dark svg[id^="mermaid"] .node rect,
+html.dark svg[id^="mermaid"] .node polygon,
+html.dark svg[id^="mermaid"] .node circle,
+html.dark svg[id^="mermaid"] .node ellipse,
+html.dark svg[id^="mermaid"] .node path,
+html[data-theme="dark"] svg[id^="mermaid"] .node rect,
+html[data-theme="dark"] svg[id^="mermaid"] .node polygon,
+html[data-theme="dark"] svg[id^="mermaid"] .node circle,
+html[data-theme="dark"] svg[id^="mermaid"] .node ellipse,
+html[data-theme="dark"] svg[id^="mermaid"] .node path {
+  fill: rgba(255, 255, 255, 0.05) !important;
+  stroke: rgba(143, 179, 245, 0.35) !important;
+  stroke-width: 1.2px !important;
+  rx: 8px !important;
+  ry: 8px !important;
+}
+
+/* Dark Mode Clusters (Subgraphs) */
+html.dark svg[id^="mermaid"] .cluster rect,
+html.dark svg[id^="mermaid"] .cluster path,
+html.dark svg[id^="mermaid"] .cluster polygon,
+html[data-theme="dark"] svg[id^="mermaid"] .cluster rect,
+html[data-theme="dark"] svg[id^="mermaid"] .cluster path,
+html[data-theme="dark"] svg[id^="mermaid"] .cluster polygon {
+  fill: rgba(143, 179, 245, 0.03) !important;
+  stroke: rgba(255, 255, 255, 0.12) !important;
+  stroke-width: 1px !important;
+  rx: 10px !important;
+  ry: 10px !important;
+}
+
+/* Dark Mode Cluster Title */
+html.dark svg[id^="mermaid"] .cluster text,
+html.dark svg[id^="mermaid"] .cluster span,
+html[data-theme="dark"] svg[id^="mermaid"] .cluster text,
+html[data-theme="dark"] svg[id^="mermaid"] .cluster span {
+  fill: #8fb3f5 !important;
+  color: #8fb3f5 !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+}
+
+/* Dark Mode Node Text */
+html.dark svg[id^="mermaid"] .node text,
+html.dark svg[id^="mermaid"] .node tspan,
+html.dark svg[id^="mermaid"] .node span,
+html.dark svg[id^="mermaid"] .node div,
+html[data-theme="dark"] svg[id^="mermaid"] .node text,
+html[data-theme="dark"] svg[id^="mermaid"] .node tspan,
+html[data-theme="dark"] svg[id^="mermaid"] .node span,
+html[data-theme="dark"] svg[id^="mermaid"] .node div {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  font-size: 11.5px !important;
+}
+
+/* Dark Mode Flowchart Connectors & Arrow Markers */
+html.dark svg[id^="mermaid"] .flowchart-link,
+html.dark svg[id^="mermaid"] .edgePath .path,
+html.dark svg[id^="mermaid"] path.path,
+html[data-theme="dark"] svg[id^="mermaid"] .flowchart-link,
+html[data-theme="dark"] svg[id^="mermaid"] .edgePath .path,
+html[data-theme="dark"] svg[id^="mermaid"] path.path {
+  stroke: rgba(143, 179, 245, 0.6) !important;
+  stroke-width: 1.2px !important;
+}
+
+html.dark svg[id^="mermaid"] marker path,
+html.dark svg[id^="mermaid"] marker circle,
+html[data-theme="dark"] svg[id^="mermaid"] marker path,
+html[data-theme="dark"] svg[id^="mermaid"] marker circle {
+  fill: #8fb3f5 !important;
+  stroke: #8fb3f5 !important;
+}
+
+/* Dark Mode Edge Label Badges */
+html.dark svg[id^="mermaid"] .edgeLabel,
+html.dark svg[id^="mermaid"] .edgeLabel rect,
+html.dark svg[id^="mermaid"] .edgeLabel span,
+html[data-theme="dark"] svg[id^="mermaid"] .edgeLabel,
+html[data-theme="dark"] svg[id^="mermaid"] .edgeLabel rect,
+html[data-theme="dark"] svg[id^="mermaid"] .edgeLabel span {
+  background: #0f172a !important;
+  fill: #0f172a !important;
+  color: #cbd5e1 !important;
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   5. Common Components & Typography Polish
    ────────────────────────────────────────────────────────────────────────── */
 table {
   font-size: 12.5px !important;
