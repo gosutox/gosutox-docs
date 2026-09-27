@@ -2,6 +2,15 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Gōsuto X & AXON Docs",
+  "logo": {
+    "light": "/logo/logo-light.png",
+    "dark": "/logo/logo-dark.png",
+    "href": "https://docs.gosutox.com"
+  },
+  "favicon": {
+    "light": "/logo/favicon-light.png",
+    "dark": "/logo/favicon-dark.png"
+  },
   "colors": {
     "primary": "#389542",
     "light": "#496796",
@@ -120,12 +129,16 @@
   "navbar": {
     "links": [
       {
-        "label": "AXON Cloud",
-        "href": "https://axon.gosutox.com"
-      },
-      {
         "label": "Gōsuto X Corporate",
         "href": "https://www.gosutox.com"
+      },
+      {
+        "label": "Pricing",
+        "href": "https://axon.gosutox.com/#pricing"
+      },
+      {
+        "label": "Support",
+        "href": "https://axon.gosutox.com/support"
       }
     ],
     "primary": {
