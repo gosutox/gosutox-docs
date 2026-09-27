@@ -1,22 +1,42 @@
 ---
 title: "Multimodal Data Files Vault"
-description: "6 supported file categories, size limits, and multi-file agent synthesis."
+description: "7 supported file categories, comprehensive format extensions, size limits, and 10-file multi-context staging."
 ---
 
-## Supported File Categories & Limits
+## Supported File Categories & Exhaustive Formats
 
-| Category | Formats | Max File Size |
+AXON supports native multimodal ingestion across **7 major file categories** without requiring external third-party conversion tools:
+
+| Category | Supported Format Extensions | Single-File Limit |
 | :--- | :--- | :--- |
-| **Documents** | `PDF`, `DOCX`, `TXT`, `MD`, `RTF`, `HTML` | **30MB / 300 pages** |
-| **Spreadsheets** | `XLSX`, `XLS`, `CSV`, `TSV`, `NUMBERS` | **30MB** |
-| **Code & Config** | `PY`, `JS`, `TS`, `JSON`, `YAML`, `SQL`, `SH` | **30MB** |
-| **Images** | `PNG`, `JPG`, `WEBP`, `SVG`, `GIF` | **10MB** |
-| **Audio** | `MP3`, `WAV`, `M4A`, `AAC`, `OGG` | **50MB** |
-| **Video** | `MP4`, `WEBM`, `MOV`, `AVI` | **50MB** |
+| **Documents & Slides** | `PDF`, `DOCX`, `DOC`, `TXT`, `MD`, `MDX`, `PPTX`, `PPT`, `HTML`, `RTF` | **30MB / 300 pages** |
+| **Spreadsheets & Data** | `XLSX`, `XLS`, `CSV`, `TSV`, `PARQUET`, `NPY`, `NPZ` | **30MB** |
+| **Code & Config** | `PY`, `IPYNB`, `JS`, `MJS`, `TS`, `TSX`, `JSX`, `CSS`, `SCSS`, `JSON`, `YAML`, `YML`, `TOML`, `INI`, `ENV`, `SQL`, `SH`, `DOCKERFILE` | **30MB** |
+| **Images & Graphics** | `PNG`, `JPG`, `JPEG`, `WEBP`, `SVG`, `GIF`, `ICO`, `HEIC`, `HEIF` | **10MB** |
+| **Audio & Recordings** | `MP3`, `WAV`, `M4A`, `AAC`, `OGG` | **50MB** |
+| **Video & Screencasts** | `MP4`, `MOV`, `WEBM`, `AVI`, `MPEG` | **50MB** |
+| **Archives & Packages** | `ZIP`, `TAR`, `GZ`, `RAR` | **50MB** |
 
-### Multi-File Turn Selection
-Users can select up to **10 files simultaneously** in the Right Tools Panel for a single agent conversation turn.
+---
+
+## 10-File Multi-Context Turn Staging
+
+In the **Right Context Tools Panel**, users can select up to **10 files simultaneously** across any combination of categories for a single reasoning turn:
+
+```mermaid
+flowchart TD
+    subgraph Staged_Vault ["📁 10-File Multimodal Staging Vault"]
+        direction LR
+        F1["📄 Patent_Claims.pdf"]
+        F2["📊 Q3_Financial_Model.xlsx"]
+        F3["🖼️ System_Architecture.png"]
+        F4["💻 Contract_Logic.py"]
+    end
+
+    Staged_Vault --> Synthesis["⚡ Unified 1-Turn Cognitive Reasoning"]
+    Synthesis --> Output["🎯 Comprehensive Boardroom Deliverable"]
+```
 
 ### The Power of Multimodal Staging
-* **Direct Token Stream**: Files are staged directly in memory or indexed for zero-loss OCR and structured analysis.
-* **Complex Data Fusion**: Combine a corporate PDF policy, an Excel financial model, and a screenshot of a dashboard in 1 prompt turn.
+* **Direct Token Stream**: Files are ingested with zero OCR degradation and structured mathematical precision.
+* **Complex Data Fusion**: Cross-examine a corporate legal PDF, an Excel valuation model, and an architectural diagram in a single conversation turn.
