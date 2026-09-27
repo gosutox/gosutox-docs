@@ -1,14 +1,72 @@
 ---
-title: 'Document Studio & Viewer Overview'
-description: 'Interactive presentation studio with A4/Letter formats, dual-theme rendering, and zoom controls.'
+title: "Document Studio & Viewer Overview"
+description: "Executive presentation suite featuring A4/Letter page viewports, dual-theme rendering, zoom controls, and full-screen keynote presentation mode."
 ---
 
-## The AXON Document Studio
+## The Executive Publishing Suite
 
-**Document Studio** is AXON's dedicated document rendering and presentation suite.
+Traditional AI chat interfaces trap critical deliverables in narrow, ephemeral message streams. Reading multi-page financial models or legal risk matrices inside a chat bubble creates severe cognitive fatigue.
 
-### Core Features
-* **A4 & Letter Layout Switching**: Seamlessly toggle between international A4 and North American Letter page formats.
-* **Dual-Theme Synchronization**: Preview documents in Navy Mirage (Light Mode) or Frost Glass (Dark Mode).
-* **Zoom Controls**: Adjust preview scaling from 75% to 150% for detailed proofreading.
-* **Interactive Slide Presentation**: Present generated HTML slide decks directly in full-screen mode.
+**AXON Document Studio** provides a dedicated, full-screen publishing and presentation environment. It transforms raw AI markdown outputs and interactive HTML code into boardroom-ready documents:
+
+```mermaid
+flowchart TD
+    AI_Output["💬 AI Agent / Symposium / CoWorX Deliverable"] --> Studio["🖥️ AXON Document Studio Suite"]
+
+    subgraph Studio_Controls ["🎛️ Executive Viewing Controls"]
+        P1["📄 A4 & US Letter Page Format Toggle"]
+        P2["🌓 Dual-Theme Sync (Navy Mirage • Frost Glass)"]
+        P3["🔍 Fluid Zoom Controls (50% – 200% Fit-to-Width)"]
+        P4["🖥️ Full-Screen Keynote Presentation Mode"]
+    end
+
+    Studio --> Studio_Controls
+    Studio_Controls --> Export_HTML["📦 Standalone HTML Bundle (.html)"]
+    Studio_Controls --> Export_PDF["📄 Pixel-Perfect Boardroom PDF Print"]
+```
+
+---
+
+## 4 Core Capabilities of Document Studio
+
+<CardGroup cols={2}>
+  <Card title="A4 & US Letter Viewport Toggle" icon="file">
+    Instantly switch between international **ISO A4 (210 × 297 mm)** and North American **US Letter (8.5 × 11 in)** dimensions to preview exact print layouts before physical distribution.
+  </Card>
+  <Card title="Dual-Theme Synchronization" icon="circle-half-stroke">
+    Toggle between **Solid Steel Navy Mirage (Light Mode)** for crisp daytime reading and **Translucent Frost Glass (Dark Mode)** for low-light boardroom presentations.
+  </Card>
+  <Card title="Fluid Zoom & Fit Controls" icon="magnifying-glass-plus">
+    Scale document preview smoothly from **50% to 200%** or click **Fit to Width** for distraction-free executive proofreading.
+  </Card>
+  <Card title="Full-Screen Keynote Mode" icon="expand">
+    Present generated interactive slide decks and dashboards full-screen with keyboard navigation (`←` / `→`) and animated slide transitions.
+  </Card>
+</CardGroup>
+
+---
+
+## Anatomy of the Document Studio Toolbar
+
+The top toolbar in Document Studio provides instant access to publishing controls:
+
+| Control Button | Keyboard Shortcut | Functionality |
+| :--- | :--- | :--- |
+| **Page Format (A4 / Letter)** | `Cmd + Shift + P` | Toggles paper viewport dimensions for print accuracy |
+| **Theme Toggle (Light / Dark)** | `Cmd + Shift + T` | Synchronizes document typography and background palette |
+| **Zoom In / Out / Reset** | `Cmd + +` / `Cmd + -` / `Cmd + 0` | Adjusts zoom scale smoothly with persistent state |
+| **Download HTML** | `Cmd + S` | Exports a self-contained, zero-dependency `.html` bundle |
+| **Print / Export PDF** | `Cmd + P` | Triggers the Two-Pass PDF print engine with zero page-split truncation |
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Standalone HTML Bundle Export" icon="code" href="/studio/html-download">
+    Learn how single-file HTML bundles operate offline across any browser or OS.
+  </Card>
+  <Card title="Pixel-Perfect PDF Printing Engine" icon="file-pdf" href="/studio/pdf-printing-engine">
+    Understand the two-pass rendering sweep ensuring clean page breaks and corporate watermarks.
+  </Card>
+</CardGroup>
