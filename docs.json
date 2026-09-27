@@ -1,95 +1,97 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
   "name": "Gōsuto X & AXON Docs",
   "colors": {
     "primary": "#389542",
     "light": "#496796",
-    "dark": "#8fb3f5",
-    "background": {
-      "dark": "#0d131f",
-      "light": "#ffffff"
-    }
+    "dark": "#8fb3f5"
   },
-  "topbarLinks": [
-    {
-      "name": "AXON Cloud",
-      "url": "https://axon.gosutox.com"
-    },
-    {
-      "name": "Gōsuto X Corporate",
-      "url": "https://www.gosutox.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Launch AXON",
-    "url": "https://axon.gosutox.com"
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "index",
+              "introduction/quickstart",
+              "introduction/architecture",
+              "introduction/philosophy"
+            ]
+          },
+          {
+            "group": "Security & Compliance",
+            "pages": [
+              "compliance/data-sovereignty",
+              "compliance/security-architecture",
+              "compliance/billing-policy"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "7 OS Apps",
+        "groups": [
+          {
+            "group": "Core Applications",
+            "pages": [
+              "apps/agent",
+              "apps/talk",
+              "apps/coworx",
+              "apps/symposium",
+              "apps/brains",
+              "apps/api",
+              "apps/rcag"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "80+ Live Data",
+        "groups": [
+          {
+            "group": "Live Channels",
+            "pages": [
+              "live-data/overview",
+              "live-data/sec-edgar",
+              "live-data/dart-fss",
+              "live-data/google-search",
+              "live-data/financial-markets"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Release History",
+            "pages": [
+              "changelog/overview",
+              "changelog/v1.0.0"
+            ]
+          }
+        ]
+      }
+    ]
   },
-  "tabs": [
-    {
-      "name": "Documentation",
-      "url": "introduction"
-    },
-    {
-      "name": "7 OS Apps",
-      "url": "apps"
-    },
-    {
-      "name": "80+ Live Data",
-      "url": "live-data"
-    },
-    {
-      "name": "Changelog",
-      "url": "changelog"
+  "navbar": {
+    "links": [
+      {
+        "label": "AXON Cloud",
+        "href": "https://axon.gosutox.com"
+      },
+      {
+        "label": "Gōsuto X",
+        "href": "https://www.gosutox.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Launch AXON",
+      "href": "https://axon.gosutox.com"
     }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction/quickstart",
-        "introduction/architecture",
-        "introduction/philosophy"
-      ]
-    },
-    {
-      "group": "7 Core OS Apps",
-      "pages": [
-        "apps/agent",
-        "apps/talk",
-        "apps/coworx",
-        "apps/symposium",
-        "apps/brains",
-        "apps/api",
-        "apps/rcag"
-      ]
-    },
-    {
-      "group": "Live Data Channels",
-      "pages": [
-        "live-data/overview",
-        "live-data/sec-edgar",
-        "live-data/dart-fss",
-        "live-data/google-search",
-        "live-data/financial-markets"
-      ]
-    },
-    {
-      "group": "Security & Compliance",
-      "pages": [
-        "compliance/data-sovereignty",
-        "compliance/security-architecture",
-        "compliance/billing-policy"
-      ]
-    },
-    {
-      "group": "Changelog",
-      "pages": [
-        "changelog/overview",
-        "changelog/v1.0.0"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "github": "https://github.com/gosutox"
   }
 }
