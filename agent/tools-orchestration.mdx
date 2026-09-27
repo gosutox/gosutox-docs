@@ -1,22 +1,38 @@
 ---
-title: '1-Turn Tool Symphony'
-description: 'How to combine custom Brains, 41+ live APIs, and 10 data files in a single conversation turn.'
+title: "1-Turn Tool Symphony"
+description: "How to combine custom Brains, 41+ live APIs, and 10 data files in a single conversation turn."
 ---
 
 ## The 1-Turn Symphony Concept
 
-The true power of AXON Agent lies in combining multiple isolated data dimensions into a single prompt turn.
+The true power of AXON Agent lies in combining multiple isolated data dimensions into a single prompt turn:
 
-```
-┌────────────────────────────────────────────────────────────────┐
-│                     SINGLE PROMPT TURN                         │
-│                                                                │
-│  [ 🧠 Attached Brain: Corporate Strategy Brain ]               │
-│  [ 📡 Active API: SEC EDGAR 10-K Connector ]                   │
-│  [ 📁 Attached Files: Q3_Financial_Model.xlsx, Patent.pdf ]     │
-│                                                                │
-│  "Evaluate competitor risks against our internal roadmap."    │
-└────────────────────────────────────────────────────────────────┘
+<CardGroup cols={3}>
+  <Card title="🧠 Attached Brain" icon="brain">
+    **Corporate Strategy Brain**
+    Ingests proprietary schemas, terminology, and internal heuristics.
+  </Card>
+  <Card title="📡 Active Live API" icon="signal">
+    **SEC EDGAR 10-K Connector**
+    Streams live official financial filings and regulatory disclosures.
+  </Card>
+  <Card title="📁 Attached Files" icon="folder-open">
+    **Financial Model & Patent.pdf**
+    Extracts raw figures and claims with zero OCR hallucination.
+  </Card>
+</CardGroup>
+
+```mermaid
+flowchart LR
+    Turn["💬 Single Prompt Turn"] --> Brain["🧠 Attached Brain"]
+    Turn --> API["📡 Live API (SEC EDGAR)"]
+    Turn --> Files["📁 Data Files (Excel/PDF)"]
+
+    Brain --> Engine["⚡ AXON Reasoning Engine"]
+    API --> Engine
+    Files --> Engine
+
+    Engine --> Result["📊 Unified Executive Synthesis"]
 ```
 
 ### Execution Flow in 1 Turn

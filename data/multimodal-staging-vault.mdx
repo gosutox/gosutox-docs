@@ -1,18 +1,22 @@
 ---
-title: 'Multimodal Data Files Vault'
-description: '6 supported file categories, size limits, and multi-file agent synthesis.'
+title: "Multimodal Data Files Vault"
+description: "6 supported file categories, size limits, and multi-file agent synthesis."
 ---
 
 ## Supported File Categories & Limits
 
 | Category | Formats | Max File Size |
 | :--- | :--- | :--- |
-| **Documents** | , , , ,  | **30MB / 300 pages** |
-| **Spreadsheets** | , , , ,  | **30MB** |
-| **Code & Config** | , , , , ,  | **30MB** |
-| **Images** | , , , ,  | **10MB** |
-| **Audio** | , , , ,  | **50MB** |
-| **Video** | , , ,  | **50MB** |
+| **Documents** | `PDF`, `DOCX`, `TXT`, `MD`, `RTF`, `HTML` | **30MB / 300 pages** |
+| **Spreadsheets** | `XLSX`, `XLS`, `CSV`, `TSV`, `NUMBERS` | **30MB** |
+| **Code & Config** | `PY`, `JS`, `TS`, `JSON`, `YAML`, `SQL`, `SH` | **30MB** |
+| **Images** | `PNG`, `JPG`, `WEBP`, `SVG`, `GIF` | **10MB** |
+| **Audio** | `MP3`, `WAV`, `M4A`, `AAC`, `OGG` | **50MB** |
+| **Video** | `MP4`, `WEBM`, `MOV`, `AVI` | **50MB** |
 
 ### Multi-File Turn Selection
 Users can select up to **10 files simultaneously** in the Right Tools Panel for a single agent conversation turn.
+
+### The Power of Multimodal Staging
+* **Direct Token Stream**: Files are staged directly in memory or indexed for zero-loss OCR and structured analysis.
+* **Complex Data Fusion**: Combine a corporate PDF policy, an Excel financial model, and a screenshot of a dashboard in 1 prompt turn.

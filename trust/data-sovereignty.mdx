@@ -1,20 +1,40 @@
 ---
-title: 'Multi-Region Data Sovereignty'
-description: 'PIPA (South Korea) and CCPA/GDPR (US/Global) regional database isolation.'
+title: "Multi-Region Data Sovereignty"
+description: "PIPA (South Korea) and CCPA/GDPR (US/Global) regional database isolation."
 ---
 
 ## Multi-Region Data Isolation Architecture
 
-To comply with stringent international privacy laws, AXON enforces physical and logical database isolation:
+To comply with stringent international privacy laws, AXON enforces physical and logical database isolation across distinct regional datacenters:
 
-```
-┌────────────────────────────────────────┐  ┌────────────────────────────────────────┐
-│   SOUTH KOREA REGION (PIPA COMPLIANT)  │  │   UNITED STATES & GLOBAL (CCPA / GDPR) │
-│                                        │  │                                        │
-│ • GCP Project: gosutox-account-prod    │  │ • Dedicated Database: account-us       │
-│ • Regional Database: account-kr (Seoul)│  │ • Location: Iowa (us-central1)         │
-│ • Zero Cross-Border Data Mixing        │  │ • Zero Cross-Border Data Mixing        │
-└────────────────────────────────────────┘  └────────────────────────────────────────┘
+<CardGroup cols={2}>
+  <Card title="South Korea Region (PIPA Compliant)" icon="shield-halved">
+    - **GCP Project**: `gosutox-account-prod`
+    - **Regional Database**: `account-kr` (Seoul, `asia-northeast3`)
+    - **Legal Framework**: Korean Personal Information Protection Act (PIPA)
+    - **Boundary**: Zero cross-border data leakage or WAN replication
+  </Card>
+  <Card title="United States & Global (CCPA / GDPR)" icon="globe">
+    - **GCP Project**: `gosutox-account-prod`
+    - **Regional Database**: `account-us` (Iowa, `us-central1`)
+    - **Legal Framework**: CCPA & European GDPR Data Residency
+    - **Boundary**: Dedicated isolated database instance with strict regional pinning
+  </Card>
+</CardGroup>
+
+```mermaid
+flowchart TD
+    Client["🌐 Global AXON Client Request"]
+    Client -->|"Korean Account Routing"| KR["🇰🇷 South Korea Gateway"]
+    Client -->|"US / Global Account Routing"| US["🇺🇸 US & Global Gateway"]
+
+    subgraph KR_Datacenter ["Isolated Seoul Datacenter (asia-northeast3)"]
+        KR --> KR_DB[("Regional DB: account-kr<br/>(PIPA Compliant)")]
+    end
+
+    subgraph US_Datacenter ["Isolated Iowa Datacenter (us-central1)"]
+        US --> US_DB[("Dedicated DB: account-us<br/>(CCPA/GDPR Compliant)")]
+    end
 ```
 
 User credentials, profile records, and conversation history are permanently pinned to the customer's selected home region.
