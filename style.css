@@ -51,17 +51,48 @@ p, li {
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Light Mode: Solid Navy Mirage & Steel Palette
+   1. Light Mode: Solid Navy Mirage Standard
+   Active: linear-gradient(135deg, #496796, #1d2639)
+   Accent: #496796
    ────────────────────────────────────────────────────────────────────────── */
 html.light,
 html[data-theme='light'],
 :root:not(.dark) {
-  --color-primary: #39b54a;
+  --color-primary: #496796;
   --color-text-main: #000000;
   --color-text-muted: #555555;
   --color-border-card: rgba(0, 0, 0, 0.08);
 }
 
+/* Active Topbar Tab in Light Mode */
+html.light header nav a[aria-current="page"],
+html.light header nav a[data-state="active"],
+html.light header nav a.active {
+  background: linear-gradient(135deg, #496796, #1d2639) !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(73, 103, 150, 0.25) !important;
+  font-weight: 500 !important;
+}
+
+/* Active Sidebar Navigation Item in Light Mode */
+html.light nav a[aria-current="page"],
+html.light aside a[aria-current="page"],
+html.light .sidebar-item-active,
+html.light [aria-current="page"] {
+  background: linear-gradient(135deg, #496796, #1d2639) !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(73, 103, 150, 0.2) !important;
+  font-weight: 500 !important;
+}
+
+html.light nav a[aria-current="page"] *,
+html.light aside a[aria-current="page"] * {
+  color: #ffffff !important;
+}
+
+/* Light Mode Cards */
 html.light a.card,
 html.light .card {
   border-radius: 8px !important;
@@ -74,21 +105,67 @@ html.light .card {
 html.light a.card:hover,
 html.light .card:hover {
   border-color: rgba(73, 103, 150, 0.35) !important;
-  box-shadow: 0 4px 14px rgba(73, 103, 150, 0.12) !important;
+  box-shadow: 0 4px 14px rgba(73, 103, 150, 0.15) !important;
   transform: translateY(-1px);
 }
 
+/* Light Mode Topbar Action CTA Button */
+html.light header a[href*="axon.gosutox.com"],
+html.light header button[class*="primary"] {
+  background: linear-gradient(135deg, #496796, #1d2639) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(73, 103, 150, 0.25) !important;
+}
+
 /* ──────────────────────────────────────────────────────────────────────────
-   Dark Mode: Translucent Frost Glass & Ice Blue Palette
+   2. Dark Mode: Translucent Frost Glass & Ice Blue Standard
+   Active: rgba(143, 179, 245, 0.28) with 12px blur
+   Accent: #8fb3f5
    ────────────────────────────────────────────────────────────────────────── */
 html.dark,
 html[data-theme='dark'] {
-  --color-primary: #39b54a;
+  --color-primary: #8fb3f5;
   --color-text-main: #ffffff;
   --color-text-muted: #8b949e;
   --color-border-card: rgba(255, 255, 255, 0.08);
 }
 
+/* Active Topbar Tab in Dark Mode */
+html.dark header nav a[aria-current="page"],
+html.dark header nav a[data-state="active"],
+html.dark header nav a.active {
+  background: rgba(143, 179, 245, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  font-weight: 500 !important;
+}
+
+/* Active Sidebar Navigation Item in Dark Mode */
+html.dark nav a[aria-current="page"],
+html.dark aside a[aria-current="page"],
+html.dark .sidebar-item-active,
+html.dark [aria-current="page"] {
+  background: rgba(143, 179, 245, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  font-weight: 500 !important;
+}
+
+html.dark nav a[aria-current="page"] *,
+html.dark aside a[aria-current="page"] * {
+  color: #ffffff !important;
+}
+
+/* Dark Mode Cards */
 html.dark a.card,
 html.dark .card {
   border-radius: 8px !important;
@@ -108,14 +185,20 @@ html.dark .card:hover {
   transform: translateY(-1px);
 }
 
-/* Top Navigation CTA Button */
-header a[href*="axon.gosutox.com"] {
-  font-weight: 500 !important;
-  font-size: 12.5px !important;
-  border-radius: 6px !important;
+/* Dark Mode Topbar Action CTA Button */
+html.dark header a[href*="axon.gosutox.com"],
+html.dark header button[class*="primary"] {
+  background: rgba(143, 179, 245, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* Table Styling */
+/* ──────────────────────────────────────────────────────────────────────────
+   3. Common Components & Typography Polish
+   ────────────────────────────────────────────────────────────────────────── */
 table {
   font-size: 12.5px !important;
 }
@@ -129,4 +212,11 @@ th {
 
 td {
   font-weight: 300 !important;
+}
+
+/* Badges & Pills */
+.badge, [class*="badge"] {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
 }
