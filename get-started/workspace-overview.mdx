@@ -7,34 +7,45 @@ description: "Master the 3-column enterprise interface: Left Navigation Drawer, 
 
 AXON is built upon an ergonomic, high-density 3-column workspace designed to keep complex enterprise context accessible without cluttering your cognitive flow.
 
-```mermaid
-flowchart LR
-    subgraph Col1 ["1. Left Navigation Drawer"]
-        direction TB
-        N1["➕ New Chat Session"]
-        N2["📁 Categorized Folder Tree"]
-        N3["🔍 Real-Time Session Search"]
-        N4["⚡ Background Tasks Monitor"]
-    end
+<CardGroup cols={3}>
+  <Card title="1. Left Navigation Drawer" icon="sidebar">
+    * **➕ New Chat Session**: Instant unpolluted cognitive thread (`Cmd + Shift + O`)
+    * **📁 Folder Tree**: Categorized nested project hierarchies
+    * **🔍 Session Search**: Real-time keyword filter (`Cmd + K`)
+    * **⚡ Task Monitor**: Autonomous background research runners
+  </Card>
+  <Card title="2. Central Execution Canvas" icon="window">
+    * **🧭 Top App Switcher**: Fluid jump across the 7 core apps
+    * **💬 60 FPS Fluid Stream**: Zero-stutter streaming text engine
+    * **💭 Thinking Trace**: Collapsible multi-step reasoning trace
+    * **📄 Action Bar**: Standalone HTML & executive PDF export
+  </Card>
+  <Card title="3. Right Context Tools Panel" icon="sliders">
+    * **🧠 Brains Selector**: Attach domain expert neural hubs
+    * **📡 41+ Live APIs**: SEC EDGAR, DART, FDA, FRED, Crypto
+    * **📁 10-File Vault**: Multimodal document & data staging
+    * **⚙️ Reasoning Mode**: Instant toggle between Flash & Think
+  </Card>
+</CardGroup>
 
-    subgraph Col2 ["2. Central Execution Canvas"]
-        direction TB
-        C1["🧭 Top App Switcher & Regional Badge"]
-        C2["💬 60 FPS Fluid Streaming Stream"]
-        C3["💭 Dynamic Collapsible Thinking Block"]
-        C4["📄 Action Bar (HTML & PDF Export)"]
-        C5["⌨️ Multi-Format Prompt Input"]
+```mermaid
+flowchart TD
+    subgraph Col1 ["1. Left Navigation Drawer"]
+        N1["📁 Historical Sessions & Project Folders"]
     end
 
     subgraph Col3 ["3. Right Context Tools Panel"]
-        direction TB
-        R1["🧠 Brain Neural Hub Selector"]
-        R2["📡 41+ Real-Time API Toggles"]
-        R3["📁 10-File Multimodal Staging"]
-        R4["⚙️ Reasoning Mode (Flash / Think)"]
+        R1["🧠 Custom Brains + 📡 41+ Live APIs + 📁 10-File Vault"]
     end
 
-    Col1 --- Col2 --- Col3
+    subgraph Col2 ["2. Central Execution Canvas"]
+        C1["💬 60 FPS Fluid Reasoning & Streaming Engine"]
+        C2["📄 Boardroom Deliverables (Standalone HTML & PDF)"]
+    end
+
+    Col1 -->|Activate Session| Col2
+    Col3 -->|1-Turn Dynamic Context Injection| Col2
+    Col2 -->|Generate & Export| C2
 ```
 
 ---
@@ -101,13 +112,13 @@ The Right Panel is your dynamic context console, allowing you to selectively act
   <Tab title="📁 Data Files Staging">
     - Select up to **10 files** simultaneously from your Multimodal Vault.
     - **Comprehensive Format Support Across 7 Categories**:
-      - **Documents**: `PDF`, `DOCX`, `DOC`, `TXT`, `MD`, `MDX`, `PPTX`, `PPT`, `HTML`
-      - **Spreadsheets & Data**: `XLSX`, `XLS`, `CSV`, `TSV`, `PARQUET`
-      - **Code & Config**: `PY`, `IPYNB`, `JS`, `TS`, `TSX`, `JSX`, `JSON`, `YAML`, `YML`, `TOML`, `ENV`, `SQL`, `SH`
-      - **Images**: `PNG`, `JPG`, `JPEG`, `WEBP`, `SVG`, `GIF`, `HEIC`
-      - **Audio**: `MP3`, `WAV`, `M4A`, `AAC`, `OGG`
-      - **Video**: `MP4`, `MOV`, `WEBM`, `AVI`, `MPEG`
-      - **Archives**: `ZIP`, `TAR`, `GZ`
+      - **Documents & Slides**: `PDF`, `DOCX`, `DOC`, `TXT`, `MD`, `MDX`, `PPTX`, `PPT`, `HTML`, `RTF`
+      - **Spreadsheets & Data**: `XLSX`, `XLS`, `CSV`, `TSV`, `PARQUET`, `NPY`, `NPZ`
+      - **Code & Config**: `PY`, `IPYNB`, `JS`, `MJS`, `TS`, `TSX`, `JSX`, `CSS`, `SCSS`, `JSON`, `YAML`, `YML`, `TOML`, `INI`, `ENV`, `SQL`, `SH`, `DOCKERFILE`
+      - **Images & Graphics**: `PNG`, `JPG`, `JPEG`, `WEBP`, `SVG`, `GIF`, `ICO`, `HEIC`, `HEIF`
+      - **Audio & Recordings**: `MP3`, `WAV`, `M4A`, `AAC`, `OGG`
+      - **Video & Screencasts**: `MP4`, `MOV`, `WEBM`, `AVI`, `MPEG`
+      - **Archives & Packages**: `ZIP`, `TAR`, `GZ`, `RAR`
     - Directly fuses internal financial spreadsheets, slide decks, patents, and datasets into the active reasoning loop.
   </Tab>
 </Tabs>
