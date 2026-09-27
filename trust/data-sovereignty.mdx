@@ -1,0 +1,20 @@
+---
+title: 'Multi-Region Data Sovereignty'
+description: 'PIPA (South Korea) and CCPA/GDPR (US/Global) regional database isolation.'
+---
+
+## Multi-Region Data Isolation Architecture
+
+To comply with stringent international privacy laws, AXON enforces physical and logical database isolation:
+
+```
+┌────────────────────────────────────────┐  ┌────────────────────────────────────────┐
+│   SOUTH KOREA REGION (PIPA COMPLIANT)  │  │   UNITED STATES & GLOBAL (CCPA / GDPR) │
+│                                        │  │                                        │
+│ • GCP Project: gosutox-account-prod    │  │ • Dedicated Database: account-us       │
+│ • Regional Database: account-kr (Seoul)│  │ • Location: Iowa (us-central1)         │
+│ • Zero Cross-Border Data Mixing        │  │ • Zero Cross-Border Data Mixing        │
+└────────────────────────────────────────┘  └────────────────────────────────────────┘
+```
+
+User credentials, profile records, and conversation history are permanently pinned to the customer's selected home region.

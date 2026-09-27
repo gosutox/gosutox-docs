@@ -5,72 +5,116 @@
   "colors": {
     "primary": "#389542",
     "light": "#496796",
-    "dark": "#8fb3f5"
+    "dark": "#8fb3f5",
+    "background": {
+      "dark": "#0d131f",
+      "light": "#ffffff"
+    }
   },
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "Get Started",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Welcome & Onboarding",
             "pages": [
               "index",
-              "introduction/quickstart",
-              "introduction/architecture",
-              "introduction/philosophy"
+              "get-started/quickstart",
+              "get-started/philosophy-ai2",
+              "get-started/workspace-overview"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Core AI Engine",
+        "groups": [
+          {
+            "group": "AXON Agent (Core Engine)",
+            "pages": [
+              "agent/overview",
+              "agent/sessions-and-folders",
+              "agent/reasoning-modes",
+              "agent/tools-orchestration",
+              "agent/code-generation-html"
             ]
           },
           {
-            "group": "Security & Compliance",
+            "group": "Brains Studio (Neural Hubs)",
             "pages": [
-              "compliance/data-sovereignty",
-              "compliance/security-architecture",
-              "compliance/billing-policy"
+              "brains/overview",
+              "brains/creating-brains",
+              "brains/brain-management"
             ]
           }
         ]
       },
       {
-        "tab": "7 OS Apps",
+        "tab": "Flagship Apps",
         "groups": [
           {
-            "group": "Core Applications",
+            "group": "AXON Symposium (Multi-Agent Debate)",
             "pages": [
-              "apps/agent",
-              "apps/talk",
-              "apps/coworx",
-              "apps/symposium",
-              "apps/brains",
-              "apps/api",
-              "apps/rcag"
+              "symposium/overview",
+              "symposium/summoning-expert-panel",
+              "symposium/autonomous-debate-flow",
+              "symposium/consensus-report-export"
+            ]
+          },
+          {
+            "group": "AXON CoWorX (Team Canvas & Messenger)",
+            "pages": [
+              "coworx/overview",
+              "coworx/summoning-personal-brains",
+              "coworx/live-canvas-authoring",
+              "coworx/team-workspace-management"
+            ]
+          },
+          {
+            "group": "AXON Talk (Brain-Embodied Voice)",
+            "pages": [
+              "talk/overview",
+              "talk/brain-embodied-voices",
+              "talk/voice-customization",
+              "talk/mobile-handsfree-scenarios"
             ]
           }
         ]
       },
       {
-        "tab": "80+ Live Data",
+        "tab": "Data & Studio",
         "groups": [
           {
-            "group": "Live Channels",
+            "group": "Live Data & Multimodal Vault",
             "pages": [
-              "live-data/overview",
-              "live-data/sec-edgar",
-              "live-data/dart-fss",
-              "live-data/google-search",
-              "live-data/financial-markets"
+              "data/live-data-architecture",
+              "data/41-global-api-channels",
+              "data/multimodal-staging-vault",
+              "data/why-pdf-conversion"
+            ]
+          },
+          {
+            "group": "Document Studio & Artifacts",
+            "pages": [
+              "studio/document-viewer",
+              "studio/html-download",
+              "studio/pdf-printing-engine"
             ]
           }
         ]
       },
       {
-        "tab": "Changelog",
+        "tab": "Trust & Security",
         "groups": [
           {
-            "group": "Release History",
+            "group": "Enterprise Governance (SOC 2)",
             "pages": [
-              "changelog/overview",
-              "changelog/v1.0.0"
+              "trust/data-sovereignty",
+              "trust/zero-training-guarantee",
+              "trust/token-economics-billing",
+              "trust/refund-and-cancellation",
+              "trust/changelog-v1.0.0"
             ]
           }
         ]
@@ -84,7 +128,7 @@
         "href": "https://axon.gosutox.com"
       },
       {
-        "label": "Gōsuto X",
+        "label": "Gōsuto X Corporate",
         "href": "https://www.gosutox.com"
       }
     ],
@@ -93,5 +137,8 @@
       "label": "Launch AXON",
       "href": "https://axon.gosutox.com"
     }
+  },
+  "footerSocials": {
+    "github": "https://github.com/gosutox"
   }
 }

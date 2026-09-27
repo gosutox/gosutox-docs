@@ -1,0 +1,35 @@
+---
+title: 'AXON Agent: The Cognitive Heart'
+description: 'Autonomous multi-step planning, tool invocation, and deterministic execution.'
+---
+
+## What is AXON Agent?
+
+**AXON Agent** is the central flagship engine of the AXON Cognitive OS. It serves as an autonomous cognitive partner capable of receiving high-level complex tasks, decomposing them into sequential sub-tasks, querying external tools, and delivering boardroom-ready outcomes.
+
+### Core Architecture
+
+```mermaid
+flowchart TD
+    User["User Natural Language Goal"] --> L1["L1 Sub-100ms Gatekeeper Classifier"]
+    L1 --> Route{"Intent Decision"}
+    Route -->|Direct| Flash["Flash Fast-Path Response"]
+    Route -->|Complex| Orchestrator["Autonomous Reasoning Orchestrator"]
+
+    Orchestrator --> Brains["Custom Neural Brains"]
+    Orchestrator --> APIs["41+ Real-Time Global APIs"]
+    Orchestrator --> Vault["Data Files (Up to 10 Files)"]
+    Orchestrator --> Search["Automated Google Grounding"]
+
+    Brains --> Synthesizer["Cognitive Synthesis Engine"]
+    APIs --> Synthesizer
+    Vault --> Synthesizer
+    Search --> Synthesizer
+
+    Synthesizer --> Viewer["Document Studio (HTML / PDF Export)"]
+```
+
+### Key Capabilities
+* **Dynamic L1 Gatekeeper**: Evaluates incoming queries in sub-100ms to determine required context sources.
+* **Zero Token Waste**: Only activates tools and context channels strictly necessary for the query.
+* **Transparent Contingency Fallback**: If an external API is momentarily unreachable, AXON automatically triggers Google Search verification and discloses the contingency banner.
