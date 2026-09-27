@@ -127,7 +127,7 @@
             "group": "Version History & Cadence",
             "pages": [
               "changelog/overview",
-              "changelog/v1.0.0"
+              "changelog/v1-0-0"
             ]
           }
         ]
@@ -160,8 +160,12 @@
   },
   "redirects": [
     {
+      "source": "/changelog/v1.0.0",
+      "destination": "/changelog/v1-0-0"
+    },
+    {
       "source": "/trust/changelog-v1.0.0",
-      "destination": "/changelog/v1.0.0"
+      "destination": "/changelog/v1-0-0"
     },
     {
       "source": "/introduction/philosophy",
