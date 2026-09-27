@@ -105,6 +105,49 @@ html[data-theme="light"] header .navbar-link a:hover,
   color: #496796 !important;
 }
 
+/* Global Primary CTA Button in Light Mode: Solid Navy Mirage */
+html.light #topbar-cta-button a span.absolute,
+html.light #topbar-cta-button a > span:first-child,
+html[data-theme="light"] #topbar-cta-button a span.absolute,
+html[data-theme="light"] #topbar-cta-button a > span:first-child,
+:root:not(.dark) #topbar-cta-button a span.absolute,
+:root:not(.dark) #topbar-cta-button a > span:first-child,
+html.light a.btn-primary,
+html.light .btn-primary,
+html[data-theme="light"] a.btn-primary,
+html[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #496796, #1d2639) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 2px 8px rgba(73, 103, 150, 0.25) !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease !important;
+}
+
+html.light #topbar-cta-button a:hover span.absolute,
+html.light #topbar-cta-button a:hover > span:first-child,
+html[data-theme="light"] #topbar-cta-button a:hover span.absolute,
+html[data-theme="light"] #topbar-cta-button a:hover > span:first-child,
+:root:not(.dark) #topbar-cta-button a:hover span.absolute,
+:root:not(.dark) #topbar-cta-button a:hover > span:first-child,
+html.light a.btn-primary:hover,
+html.light .btn-primary:hover,
+html[data-theme="light"] a.btn-primary:hover,
+html[data-theme="light"] .btn-primary:hover {
+  background: linear-gradient(135deg, #3d567d, #141c2c) !important;
+  box-shadow: 0 4px 14px rgba(73, 103, 150, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+html.light #topbar-cta-button a span,
+html[data-theme="light"] #topbar-cta-button a span,
+:root:not(.dark) #topbar-cta-button a span {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
 /* Top Navigation Tabs in Light Mode */
 html.light .nav-tabs .nav-tabs-item[data-active="true"],
 html[data-theme="light"] .nav-tabs .nav-tabs-item[data-active="true"],
@@ -175,6 +218,47 @@ html[data-theme="dark"] header .navbar-link a:hover {
   color: #ffffff !important;
 }
 
+/* Global Primary CTA Button in Dark Mode: Translucent Frost Glass */
+html.dark #topbar-cta-button a span.absolute,
+html.dark #topbar-cta-button a > span:first-child,
+html[data-theme="dark"] #topbar-cta-button a span.absolute,
+html[data-theme="dark"] #topbar-cta-button a > span:first-child,
+html.dark a.btn-primary,
+html.dark .btn-primary,
+html[data-theme="dark"] a.btn-primary,
+html[data-theme="dark"] .btn-primary {
+  background: rgba(143, 179, 245, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease !important;
+}
+
+html.dark #topbar-cta-button a:hover span.absolute,
+html.dark #topbar-cta-button a:hover > span:first-child,
+html[data-theme="dark"] #topbar-cta-button a:hover span.absolute,
+html[data-theme="dark"] #topbar-cta-button a:hover > span:first-child,
+html.dark a.btn-primary:hover,
+html.dark .btn-primary:hover,
+html[data-theme="dark"] a.btn-primary:hover,
+html[data-theme="dark"] .btn-primary:hover {
+  background: rgba(143, 179, 245, 0.38) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-1px);
+}
+
+html.dark #topbar-cta-button a span,
+html[data-theme="dark"] #topbar-cta-button a span {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
 /* Top Navigation Tabs in Dark Mode */
 html.dark .nav-tabs .nav-tabs-item[data-active="true"],
 html[data-theme="dark"] .nav-tabs .nav-tabs-item[data-active="true"] {
@@ -230,7 +314,7 @@ html.dark .card:hover {
    Eliminates all cartoonish default colors (Yellow #ffffde & Purple #ececff)
    ────────────────────────────────────────────────────────────────────────── */
 
-/* Mermaid Container Container */
+/* Mermaid Container */
 svg[id^="mermaid"],
 .mermaid svg,
 div[class*="mermaid"] svg {
@@ -247,7 +331,6 @@ html[data-theme="light"] svg[id^="mermaid"],
 html[data-theme="light"] .mermaid svg,
 :root:not(.dark) svg[id^="mermaid"],
 :root:not(.dark) .mermaid svg {
-  /* Nodes (Rect, Circle, Polygon, Cylinder/Path) */
   --mermaid-node-bg: #f8fafc;
   --mermaid-node-border: rgba(73, 103, 150, 0.25);
   --mermaid-node-text: #0f172a;
