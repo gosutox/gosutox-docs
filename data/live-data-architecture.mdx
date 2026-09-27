@@ -1,21 +1,25 @@
 ---
-title: 'Live Data Architecture Overview'
-description: 'How real-time external APIs eliminate hallucinations and knowledge cutoff boundaries.'
+title: "Live Data Architecture Overview"
+description: "How real-time external APIs eliminate hallucinations and knowledge cutoff boundaries."
 ---
 
 ## The Zero-Cutoff Architecture
 
-Foundational LLMs suffer from fixed training cutoff dates. AXON eliminates this barrier by bridging real-time data streams directly into reasoning loops.
+Conventional LLMs suffer from fixed training cutoff dates. AXON permanently resolves this limitation by bridging live, authoritative global data streams directly into reasoning loops.
 
 ```mermaid
 flowchart TD
-    Query["User Market Query"] --> L1["L1 Sub-100ms Gatekeeper"]
-    L1 --> Google["Automated Google Search Grounding"]
-    L1 --> APIs["41+ Global Verified API Channels"]
+    Query["🔍 User Market & Regulatory Query"] --> Router["⚡ Live Data Stream Orchestrator"]
+    Router --> Google["🌐 Automated Live Web Grounding"]
+    Router --> APIs["📡 41+ Global Verified API Channels"]
 
-    Google --> Extractor["Fact Extraction & Citation Normalizer"]
+    Google --> Extractor["📑 Fact Extraction & Citation Normalizer"]
     APIs --> Extractor
 
-    Extractor --> Reasoning["Agent Reasoning Engine with [ref:...]"]
-    Reasoning --> Output["Zero-Hallucination Factual Output"]
+    Extractor --> Reasoning["⚡ Autonomous Reasoning Engine with Grounded Citations"]
+    Reasoning --> Output["🎯 Factual Boardroom Report with Zero Hallucination"]
 ```
+
+### Key Principles
+1. **Real-Time Accuracy**: Eliminates outdated training assumptions with live financial, legal, and operational feeds.
+2. **Explicit Verification**: Every metric and disclosure is attributed to its verified official origin.

@@ -1,6 +1,6 @@
 ---
-title: 'Token Economics & Billing Governance'
-description: 'Mathematical token deductions, dynamic ABAC quotas, and encapsulated Stripe gateway.'
+title: "Token Economics & Billing Governance"
+description: "Mathematical token deductions, dynamic subscription quotas, and encapsulated Stripe gateway."
 ---
 
 ## Mathematical Token Precision
@@ -8,7 +8,7 @@ description: 'Mathematical token deductions, dynamic ABAC quotas, and encapsulat
 AXON enforces 100% mathematical token accounting with zero leakage:
 * **Input Tokens**: Exact character count deduction based on prompt and attached context.
 * **Output Tokens**: Deducted in real time per generated character.
-* **Dynamic ABAC SSOT**: Plan quotas are resolved dynamically from Firestore database rules (), eliminating arbitrary hardcoded limits.
+* **Dynamic Enterprise SSOT**: Plan quotas and limits are resolved dynamically from centralized platform subscription rules, eliminating arbitrary hardcoded limits.
 
 ### Stripe Payment Gateway
 All subscription plans and on-demand token top-ups are processed through an encapsulated, PCI-DSS compliant Stripe payment gateway.
