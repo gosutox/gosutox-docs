@@ -1,10 +1,73 @@
 ---
-title: 'Voice Models & Audio Latency'
-description: 'Neural voice selection, audio queue buffering, and dynamic latency tuning.'
+title: "Voice Models & Audio Latency"
+description: "Neural voice model selection, sub-300ms duplex streaming WebSocket audio pipeline, and latency optimization."
 ---
 
-## Audio Engine Specifications
+## Real-Time Duplex Audio Architecture
 
-* **Turnaround Latency**: Sub-300ms round-trip speech turnaround.
-* **Neural Voice Models**: Select from natural, high-clarity voice profiles optimized for English, Korean, and multilingual pronunciation.
-* **Full Transcript History**: Spoken conversations are simultaneously transcribed and saved to your session history for one-click PDF export.
+Traditional voice interfaces rely on sequential HTTP requests: record audio, send to server, convert to text, query LLM, generate speech, and download an audio file. This serial cascade results in 3 to 8 seconds of latency, destroying natural conversational rhythm.
+
+**AXON Talk** solves this with a **Pure Duplex Streaming WebSocket Architecture**:
+
+```mermaid
+flowchart LR
+    Mic["🎙️ Raw Audio Input (PCM / Opus)"] --> WS_In["⚡ Streaming WebSocket Ingress"]
+    WS_In --> Fast_ASR["🧠 Real-Time Neural Speech-to-Text"]
+    Fast_ASR --> LLM_Stream["⚡ Streaming Brain Reasoner"]
+    LLM_Stream --> Neural_TTS["🔊 Ultra-Fast Neural Voice Synthesis"]
+    Neural_TTS --> Audio_Out["🎧 Streaming Audio Playback (< 300ms)"]
+```
+
+---
+
+## Technical Performance Specifications
+
+| Performance Metric | AXON Talk Standard | Legacy Voice Bots |
+| :--- | :--- | :--- |
+| **Acoustic Round-Trip Turnaround** | **< 300ms** | 3,000ms – 8,000ms |
+| **Transport Protocol** | Bi-directional streaming WebSockets | Sequential HTTP REST requests |
+| **Interruption Handling** | Instant voice barge-in (< 50ms cut-off) | Cannot interrupt until audio finishes |
+| **Audio Fidelity** | 24kHz studio-grade neural voice synthesis | 16kHz robotic text-to-speech |
+| **Multilingual Parity** | Native English, Korean, and Chinese phonemes | Heavily accented translated phonemes |
+
+---
+
+## Neural Voice Model Selection
+
+AXON Talk provides curated neural voice profiles engineered for professional executive communication:
+
+<CardGroup cols={3}>
+  <Card title="Executive Authority (Male / Female)" icon="crown">
+    **Confident, Measured & Clear**
+    Calibrated for boardroom presentations, legal cross-examination sparring, and strategic advisory.
+  </Card>
+  <Card title="Warm & Socratic (Male / Female)" icon="heart">
+    **Engaging, Patient & Expressive**
+    Optimized for executive coaching, language training, and educational mentorship.
+  </Card>
+  <Card title="High-Velocity Analyst" icon="gauge-high">
+    **Crisp, Efficient & Direct**
+    Tuned for rapid morning market news summaries and dense financial data briefings.
+  </Card>
+</CardGroup>
+
+---
+
+## Voice Barge-In & Acoustic Echo Cancellation
+
+* **Instant Voice Barge-In**: When you speak while the AI is talking, AXON Talk detects your voice within 50ms, immediately halts downstream audio playback, and seamlessly shifts back to listening mode without turn desynchronization.
+* **Acoustic Echo Cancellation (AEC)**: Filters out speaker audio bleed so you can converse naturally using laptop speakers without requiring headphones.
+* **Adaptive Jitter Buffering**: Dynamically compensates for fluctuating mobile cellular networks (4G/5G/Wi-Fi) to eliminate audio dropouts while driving or walking.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Mobile & Hands-Free Scenarios" icon="car-side" href="/talk/mobile-handsfree-scenarios">
+    Explore in-car briefings, language training, and walking brainstorming.
+  </Card>
+  <Card title="Live Data Architecture" icon="database" href="/data/live-data-architecture">
+    Learn how real-time market APIs and multimodal vault assets feed live data into AXON Talk.
+  </Card>
+</CardGroup>

@@ -1,15 +1,88 @@
 ---
-title: 'Brain-Embodied Voice Personas'
-description: 'Transform Talk into an executive mock interviewer, Socratic tutor, or technical mentor.'
+title: "Brain-Embodied Voice Personas"
+description: "Transform AXON Talk into high-stakes executive mock interviewers, Socratic tutors, and courtroom cross-examination sparring partners."
 ---
 
-## Real-World Conversational Personas
+## Embodied Vocal Persona Architecture
 
-### 1. Executive Mock Interviewer
-Attach an *Executive Recruiter Brain* to conduct high-pressure behavioral and technical interviews with realistic real-time follow-ups.
+When you select a Brain in AXON Talk, the voice synthesis pipeline does not merely change voice pitch—it inherits the **entire 6-Axis Cognitive Architecture** of that Brain. The AI adopts the professional posture, technical vocabulary, argumentative pacing, and non-negotiable guardrails of your chosen domain expert:
 
-### 2. Socratic Academic Tutor
-Attach a *Physics or Language Tutor Brain* for interactive, child-friendly Socratic learning that guides learners through questions rather than reciting answers.
+```mermaid
+flowchart TD
+    subgraph Brain_Heritage ["🧠 Bound Cognitive Directives"]
+        Axis1["Axis 1: Persona Archetype & Demeanor"]
+        Axis4["Axis 4: Non-Negotiable Compliance Red Lines"]
+        Axis5["Axis 5: Domain Vocabulary & Taxonomies"]
+    end
 
-### 3. Hands-Free Strategic Advisor
-Discuss complex market dynamics while driving or walking, receiving concise spoken briefings grounded in real-time data.
+    Brain_Heritage --> Voice_Engine["🎙️ AXON Neural Voice Synthesis Engine"]
+    
+    Voice_Engine --> P1["👨‍⚖️ Courtroom Trial Cross-Examiner"]
+    Voice_Engine --> P2["💼 Silicon Valley Executive Recruiter"]
+    Voice_Engine --> P3["🎓 Socratic Academic Mentor"]
+```
+
+---
+
+## 3 Production Enterprise Persona Archetypes
+
+<CardGroup cols={3}>
+  <Card title="Executive Mock Interviewer" icon="briefcase">
+    **High-Pressure Behavioral & Technical Sparring**
+    Simulates grueling C-suite and Silicon Valley engineering interviews. Asks incisive follow-up questions, challenges vague answers, and scores responses.
+  </Card>
+  <Card title="Courtroom Cross-Examiner" icon="gavel">
+    **Trial Rehearsal & Deposition Prep**
+    Assumes the hostile posture of opposing litigation counsel. Attacks weak assertions, traps witnesses in contradictory statements, and hones courtroom composure.
+  </Card>
+  <Card title="Socratic Academic Tutor" icon="graduation-cap">
+    **Inquiry-Based Personalized Learning**
+    Never simply recites textbook answers. Guides learners through progressive, stimulating questions to build deep conceptual understanding from first principles.
+  </Card>
+</CardGroup>
+
+---
+
+## Concrete Persona Sparring Scenarios
+
+<AccordionGroup>
+  <Accordion title="1. High-Stakes Legal Deposition Sparring" icon="scale-balanced">
+    > **User**: *"Let's rehearse my cross-examination for the patent infringement hearing tomorrow."*
+    > 
+    > **Embodied Litigator Voice**: *"Understood. State your full name and position at Nexus BioTech for the record... Doctor, in Exhibit 4B, you claim the vector enzyme was discovered in March 2024. Why, then, does the laboratory ledger show no recorded synthesis until July? Explain that discrepancy."*
+  </Accordion>
+
+  <Accordion title="2. C-Suite Executive Recruiter" icon="user-tie">
+    > **User**: *"Interview me for the Chief Revenue Officer role at an enterprise SaaS company."*
+    > 
+    > **Embodied Recruiter Voice**: *"Welcome. In your previous role, you achieved a 120% net retention rate. Walk me through a specific quarter where enterprise churn spiked, and detail the exact tactical intervention you deployed to reverse it."*
+  </Accordion>
+
+  <Accordion title="3. Socratic Machine Learning Mentor" icon="brain-circuit">
+    > **User**: *"Why does self-attention scale quadratically with sequence length?"*
+    > 
+    > **Embodied Socratic Mentor Voice**: *"Let's explore that together. When calculating the attention score for a single token, how many other tokens in the sequence must it compare itself against? And what happens when every token performs that same comparison simultaneously?"*
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Seamless Voice-to-Transcript Continuity
+
+Every spoken sparring session is simultaneously recorded and transcribed into structured Markdown:
+
+* **Real-Time Performance Feedback**: Ask the Brain at the conclusion of the session: *"Analyze my verbal performance and provide a 3-point scorecard on clarity, conciseness, and defensive posture."*
+* **One-Click Export**: Immediately export the spoken dialogue and feedback report to **Document Studio** for PDF printing.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Voice Models & Audio Latency" icon="waveform-lines" href="/talk/voice-customization">
+    Learn how neural voice profiles and latency buffers optimize acoustic clarity.
+  </Card>
+  <Card title="Mobile & Hands-Free Scenarios" icon="car-side" href="/talk/mobile-handsfree-scenarios">
+    Explore in-car executive briefings, language training, and walking brainstorming.
+  </Card>
+</CardGroup>
