@@ -94,7 +94,7 @@ Each conversation session in the Left Drawer provides rapid inline governance co
   </Accordion>
 
   <Accordion title="🗑️ Safe Session Deletion with Optimistic Rollback" icon="trash-can">
-    Deleting a session removes all associated chat turns and reasoning traces. AXON executes an **optimistic UI deletion** (<10ms) backed by an atomic snapshot rollback guard—if a network error occurs, the session is seamlessly restored without data loss.
+    Deleting a session removes all associated chat turns and reasoning traces. AXON executes an **optimistic UI deletion** (sub-10ms) backed by an atomic snapshot rollback guard—if a network error occurs, the session is seamlessly restored without data loss.
   </Accordion>
 </AccordionGroup>
 
