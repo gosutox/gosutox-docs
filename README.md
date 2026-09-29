@@ -56,19 +56,19 @@ mintlify broken-links
 
 ---
 
-## 3. Release & Deployment Guidelines (배포 가이드라인)
+## 3. Release & Deployment Guidelines
 
 All documentation updates are governed by the **Double-PR GitOps & HITL Approval Standard**. Direct pushes to `main` are strictly prohibited.
 
 ```mermaid
 graph LR
-    Dev[문서 작성 / 수정] --> Branch[릴리스 브랜치 gosutox-docs-v1.0.0]
-    Branch --> Check[./scripts/pre-release-check.sh 실행]
-    Check --> Release[./scripts/git-release.sh 실행]
-    Release --> PR[GitHub PR 자동 생성]
-    PR --> Review{인터랙티브 PR 승인 & 머지}
-    Review --> Main[main 브랜치 머지]
-    Main --> Live[docs.gosutox.com 무중단 라이브 배포]
+    Dev[Write / Update Documentation] --> Branch[Release Branch: gosutox-docs-v1.0.0]
+    Branch --> Check[Run ./scripts/pre-release-check.sh]
+    Check --> Release[Run ./scripts/git-release.sh]
+    Release --> PR[Automated GitHub PR Creation]
+    PR --> Review{Interactive PR Review & Merge}
+    Review --> Main[Merge into main Branch]
+    Main --> Live[Zero-Downtime Deploy to docs.gosutox.com]
 ```
 
 ### Step 1: Version Alignment & Working Branch
