@@ -10,8 +10,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${REPO_ROOT}"
 
-export GH_CONFIG_DIR="${GH_CONFIG_DIR:-/Users/cbcgceo/.config/gh-gosutox}"
-export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -i /Users/cbcgceo/.ssh/id_ed25519_gosutox -o IdentitiesOnly=yes}"
+export GH_CONFIG_DIR="${GH_CONFIG_DIR:-${HOME}/.config/gh-gosutox}"
+export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -i ${HOME}/.ssh/id_ed25519_gosutox -o IdentitiesOnly=yes}"
 
 COMMIT_MSG="${1:-}"
 MODE="${2:-pr}"
