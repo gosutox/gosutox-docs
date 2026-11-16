@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ========================================================================================
-# GOSUTOX DOCS CENTER: PRE-RELEASE QUALITY & LINK AUDIT GATE (V1.0)
+# GOSUTOX DOCS CENTER: PRE-RELEASE QUALITY, LINK & ZERO-TRACE AUDIT GATE (V1.1)
 # File Path: scripts/pre-release-check.sh
-# Role: Pre-Commit & Pre-Release Documentation Quality, Navigation & Link Audit Gate
+# Role: Pre-Commit & Pre-Release Documentation Quality, Navigation & Zero-Leak Audit Gate
 # ========================================================================================
 
 set -eo pipefail
@@ -21,11 +21,11 @@ CLR_RED="\033[31m"
 CLR_GRAY="\033[90m"
 
 echo -e "\n${CLR_BOLD}${CLR_CYAN}========================================================================================${CLR_RESET}"
-echo -e "${CLR_BOLD}  GOSUTOX DOCS CENTER: PRE-RELEASE QUALITY & LINK AUDIT GATE (V1.0)${CLR_RESET}"
+echo -e "${CLR_BOLD}  GOSUTOX DOCS CENTER: PRE-RELEASE QUALITY & ZERO-TRACE AUDIT GATE (V1.1)${CLR_RESET}"
 echo -e "${CLR_BOLD}${CLR_CYAN}========================================================================================${CLR_RESET}"
 
 # 1. Check VERSION file SSOT
-echo -e "\n${CLR_BOLD}[1/4] Auditing VERSION SSOT Authority...${CLR_RESET}"
+echo -e "\n${CLR_BOLD}[1/5] Auditing VERSION SSOT Authority...${CLR_RESET}"
 if [ ! -f "VERSION" ]; then
     echo -e "${CLR_RED}[ERROR] VERSION file missing in repository root.${CLR_RESET}"
     exit 1
@@ -38,7 +38,7 @@ fi
 echo -e "${CLR_GREEN}   [OK] VERSION verified: v${VERSION}${CLR_RESET}"
 
 # 2. Check JSON Configuration Integrity
-echo -e "\n${CLR_BOLD}[2/4] Auditing docs.json & mint.json Schema Integrity...${CLR_RESET}"
+echo -e "\n${CLR_BOLD}[2/5] Auditing docs.json & mint.json Schema Integrity...${CLR_RESET}"
 if [ ! -f "docs.json" ]; then
     echo -e "${CLR_RED}[ERROR] docs.json missing in repository root.${CLR_RESET}"
     exit 1
@@ -56,7 +56,7 @@ fi
 echo -e "${CLR_GREEN}   [OK] Navigation JSON schemas validated.${CLR_RESET}"
 
 # 3. Check Page Files Existence (Zero Broken Links)
-echo -e "\n${CLR_BOLD}[3/4] Auditing Navigation Pages Existence across Filesystem...${CLR_RESET}"
+echo -e "\n${CLR_BOLD}[3/5] Auditing Navigation Pages Existence across Filesystem...${CLR_RESET}"
 python3 - << 'PYEOF'
 import json
 import os
@@ -70,7 +70,6 @@ missing_pages = []
 def check_pages(pages):
     for p in pages:
         if isinstance(p, str):
-            # check p.mdx or p.md or p/index.mdx
             cands = [
                 f"{p}.mdx",
                 f"{p}.md",
@@ -101,7 +100,7 @@ else:
 PYEOF
 
 # 4. Check Branding Assets & Styling
-echo -e "\n${CLR_BOLD}[4/4] Auditing Branding Assets & Theme CSS...${CLR_RESET}"
+echo -e "\n${CLR_BOLD}[4/5] Auditing Branding Assets & Theme CSS...${CLR_RESET}"
 if [ ! -f "favicon.ico" ]; then
     echo -e "${CLR_YELLOW}[WARN] favicon.ico not found in root.${CLR_RESET}"
 fi
@@ -110,6 +109,21 @@ if [ ! -f "style.css" ]; then
     exit 1
 fi
 echo -e "${CLR_GREEN}   [OK] Branding assets and style.css verified.${CLR_RESET}"
+
+# 5. Zero-Trace Sovereignty & Cross-Contamination Scan
+echo -e "\n${CLR_BOLD}[5/5] Running Zero-Trace Sovereignty & Cross-Contamination Scan...${CLR_RESET}"
+if git ls-files .agents .mkt_strategy | grep -q .; then
+    echo -e "${CLR_RED}[ERROR] .agents/ or .mkt_strategy/ must NEVER be tracked in public gosutox-docs!${CLR_RESET}"
+    exit 1
+fi
+FORBIDDEN_RE='([s]ukjoon|[j]ohn[[:space:]_.-]*chung|[정]석준|[c]onnex[[:space:]]*brothers|[c]onnexbrothers|[c]bcgceo|\b[c]bcg\b|[c]bcg[_-]|[_-][c]bcg|[h]ybridsphere|[하]이브리드스피어|[코]넥스|[j]ohn@|[j]ohn-office|[j]ohn-home|[h]s-gke-env|\b[c]onnex\b|[c]onnex[_-]|[_-][c]onnex|gosutox-[a]ccounts)'
+LEAKS=$(git ls-files -co --exclude-standard -z | xargs -0 grep -nEIi "$FORBIDDEN_RE" 2>/dev/null || true)
+if [ -n "$LEAKS" ]; then
+    echo -e "${CLR_RED}[ERROR] Legacy/PII cross-contamination tokens detected:${CLR_RESET}"
+    echo "$LEAKS"
+    exit 1
+fi
+echo -e "${CLR_GREEN}   [OK] Zero cross-contamination & zero private-directory leaks verified.${CLR_RESET}"
 
 echo -e "\n${CLR_GREEN}${CLR_BOLD}========================================================================================${CLR_RESET}"
 echo -e "${CLR_GREEN}${CLR_BOLD}  PRE-RELEASE AUDIT PASSED: GOSUTOX DOCS CENTER IS 100% READY FOR RELEASE${CLR_RESET}"
