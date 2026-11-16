@@ -1,99 +1,132 @@
-#!/bin/bash
-# =============================================================================
-# Gōsuto X Docs Center — Auto Git Release & PR Deployment Trigger Script
-# Usage: ./scripts/git-release.sh "commit message"
-# =============================================================================
+#!/usr/bin/env bash
+# ========================================================================================
+# GOSUTOX DOCS: AUTOMATED PRE-CHECK, PUSH & OPTION A PR GATE SCRIPT (V1.0.0)
+# Usage: ./scripts/git-release.sh "<commit_message>" [push|pr]
+# ========================================================================================
 
-set -e
+set -eo pipefail
 
-# --- 1. Parse commit message argument ---
-COMMIT_MSG="$1"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+cd "${REPO_ROOT}"
+
+export GH_CONFIG_DIR="${GH_CONFIG_DIR:-${HOME}/.config/gh-gosutox}"
+export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -i ${HOME}/.ssh/id_ed25519_gosutox -o IdentitiesOnly=yes}"
+
+COMMIT_MSG="${1:-}"
+MODE="${2:-pr}"
+
 if [ -z "$COMMIT_MSG" ]; then
-    echo "❌ Error: Commit message is required."
-    echo "   Usage:   ./scripts/git-release.sh \"commit message\""
-    echo "   Example: ./scripts/git-release.sh \"feat(docs): update 1.0.0 architecture guides\""
+    echo "Usage: ./scripts/git-release.sh \"<commit_message>\" [push|pr]"
     exit 1
 fi
 
-# --- 2. Read VERSION file (Single Source of Truth) ---
+if [[ "$MODE" != "push" && "$MODE" != "pr" ]]; then
+    echo "❌ Error: Invalid mode '$MODE'. Supported modes: push | pr"
+    exit 1
+fi
+
 if [ ! -f "VERSION" ]; then
-    echo "❌ Error: VERSION file not found in root directory."
+    echo "❌ Error: VERSION file not found in repository root."
     exit 1
 fi
-VERSION=$(cat VERSION | tr -d '[:space:]')
+VERSION=$(tr -d '[:space:]' < VERSION)
 EXPECTED_BRANCH="gosutox-docs-v${VERSION}"
+DEV_FEATURE_BRANCH="${EXPECTED_BRANCH}-launching-readiness-and-optimization-dev"
+PROD_FEATURE_BRANCH="${EXPECTED_BRANCH}-launching-readiness-and-optimization-prod"
 
-# --- 3. Verify and adjust current branch ---
-CURRENT_BRANCH=$(git branch --show-current)
-if [ "$CURRENT_BRANCH" != "$EXPECTED_BRANCH" ]; then
-    echo "⚠️  Current branch is '$CURRENT_BRANCH'. Expected '$EXPECTED_BRANCH'."
-    echo "🔄 Switching/Checking out to branch '$EXPECTED_BRANCH'..."
-    git checkout -b "$EXPECTED_BRANCH" 2>/dev/null || git checkout "$EXPECTED_BRANCH"
-    CURRENT_BRANCH=$(git branch --show-current)
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ "$CURRENT_BRANCH" == "main" || "$CURRENT_BRANCH" == "prod" ]]; then
+    echo "❌ CRITICAL SECURITY VIOLATION: Direct push/release from '${CURRENT_BRANCH}' is FORBIDDEN."
+    echo "   Work on '${EXPECTED_BRANCH}', '${DEV_FEATURE_BRANCH}', or '${PROD_FEATURE_BRANCH}' and open a PR."
+    exit 1
 fi
 
-# --- 4. Run Pre-Release Quality Audit ---
-if [ -f "./scripts/pre-release-check.sh" ]; then
-    ./scripts/pre-release-check.sh
+if [[ "$CURRENT_BRANCH" != "$EXPECTED_BRANCH" && "$CURRENT_BRANCH" != "$DEV_FEATURE_BRANCH" && "$CURRENT_BRANCH" != "$PROD_FEATURE_BRANCH" ]]; then
+    echo "❌ Error: Branch '${CURRENT_BRANCH}' does not match v${VERSION} Option A branch governance."
+    echo "   Allowed: ${EXPECTED_BRANCH} | ${DEV_FEATURE_BRANCH} | ${PROD_FEATURE_BRANCH}"
+    exit 1
 fi
 
-# --- 5. Git Stage and Commit ---
+if [[ "$MODE" == "pr" && "$CURRENT_BRANCH" == "$DEV_FEATURE_BRANCH" ]]; then
+    TARGET_BASE="$EXPECTED_BRANCH"
+else
+    TARGET_BASE="main"
+fi
+
+echo "🔍 Running Pre-Release Hygiene & Public Sanitization Check..."
+./scripts/pre-release-check.sh
+
+echo "🛡️ Checking active GitHub identity..."
+ACTIVE_LOGIN=$(gh api user -q .login 2>/dev/null || echo "")
+if [ -n "$ACTIVE_LOGIN" ]; then
+    echo "   ✅ GitHub CLI authenticated as: ${ACTIVE_LOGIN}"
+else
+    echo "❌ Error: GitHub CLI not authenticated under GH_CONFIG_DIR=${GH_CONFIG_DIR}"
+    exit 1
+fi
+
+# Prevent .agents from ever being staged in public docs repo
+if [ -d ".agents" ] && git ls-files --error-unmatch .agents >/dev/null 2>&1; then
+    echo "🧹 Removing .agents/ from Git index (Public Repo Exclusion Rule)..."
+    git rm -r --cached .agents >/dev/null
+fi
+
+FINAL_COMMIT_MSG="$COMMIT_MSG"
+if [[ "$MODE" == "push" && "$FINAL_COMMIT_MSG" != *"[skip ci]"* ]]; then
+    FINAL_COMMIT_MSG="${FINAL_COMMIT_MSG} [skip ci]"
+fi
+
 echo "📝 Staging changes..."
 git add -A
 
-if git diff-index --quiet HEAD --; then
-    echo "ℹ️  No uncommitted changes on branch '$CURRENT_BRANCH'."
+if git diff --staged --quiet; then
+    echo "ℹ️  No staged changes to commit. Proceeding to push/PR synchronization..."
 else
-    echo "💾 Committing changes: $COMMIT_MSG"
-    git commit -m "$COMMIT_MSG"
+    echo "💾 Committing changes: ${FINAL_COMMIT_MSG}"
+    git commit -m "$FINAL_COMMIT_MSG"
 fi
 
-TAG_NAME="gosutox-docs-v${VERSION}"
+echo "🚀 Pushing '${CURRENT_BRANCH}' to origin (unambiguous refs/heads/)..."
+git push -u origin "refs/heads/${CURRENT_BRANCH}:refs/heads/${CURRENT_BRANCH}"
 
-echo "🏷️  Creating release tag: $TAG_NAME"
-git tag -f -a "$TAG_NAME" -m "$COMMIT_MSG"
+if [ "$MODE" = "push" ]; then
+    echo "================================================================"
+    echo "✅ DOCS BRANCH PUSHED CLEANLY: ${CURRENT_BRANCH}"
+    echo "================================================================"
+    exit 0
+fi
 
-echo "🚀 Pushing branch '$CURRENT_BRANCH' to origin..."
-git push -f origin "refs/heads/$CURRENT_BRANCH"
+echo "🔍 Checking Pull Request status for '${CURRENT_BRANCH}' ➔ '${TARGET_BASE}'..."
+EXISTING_PR_URL=$(gh pr list --head "${CURRENT_BRANCH}" --base "${TARGET_BASE}" --state open --json url --jq '.[0].url // empty')
 
-echo "🚀 Pushing tag '$TAG_NAME' to origin..."
-git push -f origin "refs/tags/$TAG_NAME"
+if [ -n "$EXISTING_PR_URL" ]; then
+    PR_URL="$EXISTING_PR_URL"
+    echo "🔄 Existing Tracking PR updated cleanly!"
+else
+    PR_TITLE="docs(v${VERSION}): ${COMMIT_MSG}"
+    PR_BODY=$(cat <<EOF
+## Gosuto X Public Docs Release Gate (v${VERSION})
 
-# --- 6. Automated GitHub PR Generation ---
-echo ""
-echo "================================================================"
-echo "🤖 Generating / Checking GitHub Pull Request against 'main'..."
-echo "================================================================"
-
-PR_URL=$(gh pr list --repo gosutox/gosutox-docs --head "$CURRENT_BRANCH" --base main --state open --json url --jq '.[0].url' 2>/dev/null || true)
-
-if [ -z "$PR_URL" ]; then
-    echo "🚀 Creating new Pull Request in gosutox/gosutox-docs..."
-    PR_URL=$(gh pr create \
-        --repo gosutox/gosutox-docs \
-        --base main \
-        --head "$CURRENT_BRANCH" \
-        --title "🚀 [DOCS] Release v${VERSION}: ${COMMIT_MSG}" \
-        --body "### 📚 GōsutoX Docs Center Release v${VERSION}
 - **Source Branch**: \`${CURRENT_BRANCH}\`
-- **Target Branch**: \`main\`
-- **Release Tag**: \`${TAG_NAME}\`
-- **Commit Summary**: ${COMMIT_MSG}
+- **Target Branch**: \`${TARGET_BASE}\`
+- **SSOT Version**: \`v${VERSION}\`
+- **Public Hygiene**: \`.agents/\` excluded from Git index; internal GCP/IP tokens verified clean via \`./scripts/pre-release-check.sh\`.
 
-#### 🔍 Quality Gates Passed:
-- [x] Pre-release link & schema audit passed (\`./scripts/pre-release-check.sh\`)
-- [x] Zero broken links across \`docs.json\` navigation taxonomy
-- [x] Dual-theme style parity verified
-
-> **Review & Merge Instruction**: Review the documentation diffs and click **Merge pull request** to deploy live to [docs.gosutox.com](https://docs.gosutox.com)." 2>&1)
+### Approval Checklist
+- [x] \`./scripts/pre-release-check.sh\` passed
+- [ ] Human review & PR merge approval into \`${TARGET_BASE}\`
+EOF
+)
+    PR_URL=$(gh pr create --base "${TARGET_BASE}" --head "${CURRENT_BRANCH}" --title "${PR_TITLE}" --body "${PR_BODY}")
 fi
 
-echo ""
 echo "================================================================"
-echo "✅ Success! Docs release branch & PR created successfully."
+echo "🎉 DOCS PR READY!"
 echo "================================================================"
-echo "🔹 Working Branch: $CURRENT_BRANCH"
-echo "🔹 Trigger Tag:    $TAG_NAME"
-echo "🔹 PR Approval Link: $PR_URL"
+echo "🔹 Source Branch:    ${CURRENT_BRANCH}"
+echo "🔹 Target Branch:    ${TARGET_BASE}"
+echo "🔹 SSOT Version:     v${VERSION}"
+echo "🔗 PR Approval Link: ${PR_URL}"
 echo "================================================================"
-echo ""
