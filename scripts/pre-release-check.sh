@@ -116,7 +116,7 @@ if git ls-files .agents .mkt_strategy | grep -q .; then
     echo -e "${CLR_RED}[ERROR] .agents/ or .mkt_strategy/ must NEVER be tracked in public gosutox-docs!${CLR_RESET}"
     exit 1
 fi
-FORBIDDEN_RE='([s]ukjoon|[j]ohn[[:space:]_.-]*chung|[정]석준|[c]onnex[[:space:]]*brothers|[c]onnexbrothers|[c]bcgceo|\b[c]bcg\b|[c]bcg[_-]|[_-][c]bcg|[h]ybridsphere|[하]이브리드스피어|[코]넥스|[j]ohn@|[j]ohn-office|[j]ohn-home|[h]s-gke-env|\b[c]onnex\b|[c]onnex[_-]|[_-][c]onnex|gosutox-[a]ccounts)'
+FORBIDDEN_RE='([s]ukjoon|[j]ohn[[:space:]_.-]*([s]j\.?[[:space:]_.-]*)?chung|[정]석준|[c]onnex[[:space:]]*brothers|[c]onnexbrothers|[c]bcgceo|\b[c]bcg\b|[c]bcg[_-]|[_-][c]bcg|[h]ybridsphere|[하]이브리드스피어|[코]넥스|[j]ohn@|[j]ohn-office|[j]ohn-home|[h]s-gke-env|\b[c]onnex\b|[c]onnex[_-]|[_-][c]onnex|gosutox-[a]ccounts|[6]840[[:space:]]*e[[:space:]]*georgetown|[g]eorgetown[[:space:]]*cir|[e]xpertox|[j]ohnconnex|[s]assdevelopments|[c]nx-api)'
 LEAKS=$(git ls-files -co --exclude-standard -z | xargs -0 grep -nEIi "$FORBIDDEN_RE" 2>/dev/null || true)
 if [ -n "$LEAKS" ]; then
     echo -e "${CLR_RED}[ERROR] Legacy/PII cross-contamination tokens detected:${CLR_RESET}"
